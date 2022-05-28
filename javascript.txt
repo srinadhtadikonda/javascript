@@ -1,0 +1,3759 @@
+javascript:
+	* A light weight scripting language which is used to convert a static webpage into dynamic page
+	* Javascript is used to do client side validations
+	* Javascript was developed by Netscape a browser company(Brendan Eich).
+	*  Both Javascript and Java are not the same
+
+		JavaScript-> Used for client side validations
+		Java-> Used for server side validations
+
+
+var: The var is the oldest keyword to declare a variable in JavaScript. 
+
+var age=45
+document.write("age="+age)
+
+Scope: Global scoped or function scoped. The scope of the var keyword is the global or function scope. It means variables defined outside the function can be accessed globally, and variables defined inside a particular function can be accessed within the function. 
+--------------------------------------------------
+let: let keyword in JavaScript: The let keyword is an improved version of the var keyword. 
+
+Scope: block scoped: The scope of a let variable is only block scoped. It can’t be accessible outside the particular block ({block}). Let’s see the below example.
+--------------------------------------------------
+const: const keyword in JavaScript: The const keyword has all the properties that are the same as the let keyword, except the user cannot update it.
+
+Scope: block scoped: When users declare a const variable, they need to initialize it, otherwise, it returns an error. The user cannot update the const variable once it is declared. 
+
+
+// single line comment
+
+/* Mutiline 
+comment */
+
+
+
+Operator 	Description
++ 	Addition
+- 	Subtraction
+* 	Multiplication
+** 	Exponentiation (ES2016)
+/ 	Division
+% 	Modulus (Division Remainder)
+++ 	Increment
+-- 	Decrement
+
+
+
+Assignment Operators
+
+Assignment operators assign values to JavaScript variables.
+Operator 	Example 	Same As
+= 	x = y 	x = y
++= 	x += y 	x = x + y
+-= 	x -= y 	x = x - y
+*= 	x *= y 	x = x * y
+/= 	x /= y 	x = x / y
+%= 	x %= y 	x = x % y
+**= 	x **= y 	x = x ** y
+
+
+
+JavaScript Comparison Operators
+Operator 	Description
+== 	equal to
+=== 	equal value and equal type
+!= 	not equal
+!== 	not equal value or not equal type
+> 	greater than
+< 	less than
+>= 	greater than or equal to
+<= 	less than or equal to
+? 	ternary operator
+
+
+
+avaScript Logical Operators
+Operator 	Description
+&& 	logical and
+|| 	logical or
+! 	logical not
+
+
+
+
+JavaScript Type Operators
+Operator 	Description
+typeof 	Returns the type of a variable
+instanceof 	Returns true if an object is an instance of an object type
+
+
+
+
+JavaScript Bitwise Operators
+
+Bit operators work on 32 bits numbers.
+Any numeric operand in the operation is converted into a 32 bit number. The result is converted back to a JavaScript number.
+Operator 	Description 	Example 	Same as 	Result 	Decimal
+& 	AND 	5 & 1 	0101 & 0001 	0001 	 1
+| 	OR 	5 | 1 	0101 | 0001 	0101 	 5
+~ 	NOT 	~ 5 	 ~0101 	1010 	 10
+^ 	XOR 	5 ^ 1 	0101 ^ 0001 	0100 	 4
+<< 	left shift 	5 << 1 	0101 << 1 	1010 	 10
+>> 	right shift 	5 >> 1 	0101 >> 1 	0010 	  2
+>>> 	unsigned right shift 	5 >>> 1 	0101 >>> 1 	0010 	  2
+
+
+
+JavaScript String Operators
+
+The + operator can also be used to add (concatenate) strings.
+Example
+let text1 = "John";
+let text2 = "Doe";
+let text3 = text1 + " " + text2;
+
+The result of text3 will be:
+John Doe
+
+
+
+Functions
+
+
+JavaScript Functions
+
+JavaScript functions are used to perform operations. We can call JavaScript function many times to reuse the code.
+Advantage of JavaScript function
+
+There are mainly two advantages of JavaScript functions.
+
+    Code reusability: We can call a function several times so it save coding.
+    Less coding: It makes our program compact. We don’t need to write many lines of code each time to perform a common task.
+
+JavaScript Function Syntax
+
+The syntax of declaring function is given below.
+
+    function functionName([arg1, arg2, ...argN]){  
+     //code to be executed  
+    }  
+
+JavaScript Functions can have 0 or more arguments.
+JavaScript Function Example
+
+Let’s see the simple example of function in JavaScript that does not has arguments.
+
+    <script>  
+    function msg(){  
+    alert("hello! this is message");  
+    }  
+    </script>  
+    <input type="button" onclick="msg()" value="call function"/>  
+
+Test it Now
+Output of the above example
+JavaScript Function Arguments
+
+We can call function by passing arguments. Let’s see the example of function that has one argument.
+
+    <script>  
+    function getcube(number){  
+    alert(number*number*number);  
+    }  
+    </script>  
+    <form>  
+    <input type="button" value="click" onclick="getcube(4)"/>  
+    </form>  
+
+Test it Now
+Output of the above example
+Function with Return Value
+
+We can call function that returns a value and use it in our program. Let’s see the example of function that returns value.
+
+    <script>  
+    function getInfo(){  
+    return "hello javatpoint! How r u?";  
+    }  
+    </script>  
+    <script>  
+    document.write(getInfo());  
+    </script>  
+
+Test it Now
+Output of the above example
+hello javatpoint! How r u?
+JavaScript Function Object
+
+In JavaScript, the purpose of Function constructor is to create a new Function object. It executes the code globally. However, if we call the constructor directly, a function is created dynamically but in an unsecured way.
+Syntax
+
+    new Function ([arg1[, arg2[, ....argn]],] functionBody)  
+
+Parameter
+
+arg1, arg2, .... , argn - It represents the argument used by function.
+
+functionBody - It represents the function definition.
+JavaScript Function Methods
+
+Let's see function methods with description.
+Method 	Description
+apply() 	It is used to call a function contains this value and a single array of arguments.
+bind() 	It is used to create a new function.
+call() 	It is used to call a function contains this value and an argument list.
+toString() 	It returns the result in a form of a string.
+JavaScript Function Object Examples
+Example 1
+
+Let's see an example to display the sum of given numbers.
+
+    <script>  
+    var add=new Function("num1","num2","return num1+num2");  
+    document.writeln(add(2,5));  
+    </script>  
+
+Test it Now
+
+Output:
+
+7
+
+Example 2
+
+Let's see an example to display the power of provided value.
+
+    <script>  
+    var pow=new Function("num1","num2","return Math.pow(num1,num2)");  
+    document.writeln(pow(2,3));  
+    </script>  
+
+Test it Now
+
+Output:
+
+
+Objects
+
+
+
+JavaScript Objects
+
+A javaScript object is an entity having state and behavior (properties and method). For example: car, pen, bike, chair, glass, keyboard, monitor etc.
+
+JavaScript is an object-based language. Everything is an object in JavaScript.
+
+JavaScript is template based not class based. Here, we don't create class to get the object. But, we direct create objects.
+Creating Objects in JavaScript
+
+There are 3 ways to create objects.
+
+    By object literal
+    By creating instance of Object directly (using new keyword)
+    By using an object constructor (using new keyword)
+
+1) JavaScript Object by object literal
+
+The syntax of creating object using object literal is given below:
+
+    object={property1:value1,property2:value2.....propertyN:valueN}  
+
+As you can see, property and value is separated by : (colon).
+
+Let’s see the simple example of creating object in JavaScript.
+
+    <script>  
+    emp={id:102,name:"Shyam Kumar",salary:40000}  
+    document.write(emp.id+" "+emp.name+" "+emp.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+102 Shyam Kumar 40000
+2) By creating instance of Object
+
+The syntax of creating object directly is given below:
+
+    var objectname=new Object();  
+
+Here, new keyword is used to create object.
+
+Let’s see the example of creating object directly.
+
+    <script>  
+    var emp=new Object();  
+    emp.id=101;  
+    emp.name="Ravi Malik";  
+    emp.salary=50000;  
+    document.write(emp.id+" "+emp.name+" "+emp.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+101 Ravi 50000
+3) By using an Object constructor
+
+Here, you need to create function with arguments. Each argument value can be assigned in the current object by using this keyword.
+
+The this keyword refers to the current object.
+
+The example of creating object by object constructor is given below.
+
+    <script>  
+    function emp(id,name,salary){  
+    this.id=id;  
+    this.name=name;  
+    this.salary=salary;  
+    }  
+    e=new emp(103,"Vimal Jaiswal",30000);  
+      
+    document.write(e.id+" "+e.name+" "+e.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+103 Vimal Jaiswal 30000
+Defining method in JavaScript Object
+
+We can define method in JavaScript object. But before defining method, we need to add property in the function with same name as method.
+
+The example of defining method in object is given below.
+
+    <script>  
+    function emp(id,name,salary){  
+    this.id=id;  
+    this.name=name;  
+    this.salary=salary;  
+      
+    this.changeSalary=changeSalary;  
+    function changeSalary(otherSalary){  
+    this.salary=otherSalary;  
+    }  
+    }  
+    e=new emp(103,"Sonoo Jaiswal",30000);  
+    document.write(e.id+" "+e.name+" "+e.salary);  
+    e.changeSalary(45000);  
+    document.write("<br>"+e.id+" "+e.name+" "+e.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+103 Sonoo Jaiswal 30000
+103 Sonoo Jaiswal 45000
+JavaScript Object Methods
+
+The various methods of Object are as follows:
+S.No 	Methods 	Description
+1 	Object.assign() 	This method is used to copy enumerable and own properties from a source object to a target object
+2 	Object.create() 	This method is used to create a new object with the specified prototype object and properties.
+3 	Object.defineProperty() 	This method is used to describe some behavioral attributes of the property.
+4 	Object.defineProperties() 	This method is used to create or configure multiple object properties.
+5 	Object.entries() 	This method returns an array with arrays of the key, value pairs.
+6 	Object.freeze() 	This method prevents existing properties from being removed.
+7 	Object.getOwnPropertyDescriptor() 	This method returns a property descriptor for the specified property of the specified object.
+8 	Object.getOwnPropertyDescriptors() 	This method returns all own property descriptors of a given object.
+9 	Object.getOwnPropertyNames() 	This method returns an array of all properties (enumerable or not) found.
+10 	Object.getOwnPropertySymbols() 	This method returns an array of all own symbol key properties.
+11 	Object.getPrototypeOf() 	This method returns the prototype of the specified object.
+12 	Object.is() 	This method determines whether two values are the same value.
+13 	Object.isExtensible() 	This method determines if an object is extensible
+14 	Object.isFrozen() 	This method determines if an object was frozen.
+15 	Object.isSealed() 	This method determines if an object is sealed.
+16 	Object.keys() 	This method returns an array of a given object's own property names.
+17 	Object.preventExtensions() 	This method is used to prevent any extensions of an object.
+18 	Object.seal() 	This method prevents new properties from being added and marks all existing properties as non-configurable.
+19 	Object.setPrototypeOf() 	This method sets the prototype of a specified object to another object.
+20 	Object.values() 	This method returns an array of values.
+
+
+Let's see the list of JavaScript array methods with their description.
+Methods 	Description
+concat() 	It returns a new array object that contains two or more merged arrays.
+copywithin() 	It copies the part of the given array with its own elements and returns the modified array.
+entries() 	It creates an iterator object and a loop that iterates over each key/value pair.
+every() 	It determines whether all the elements of an array are satisfying the provided function conditions.
+flat() 	It creates a new array carrying sub-array elements concatenated recursively till the specified depth.
+flatMap() 	It maps all array elements via mapping function, then flattens the result into a new array.
+fill() 	It fills elements into an array with static values.
+from() 	It creates a new array carrying the exact copy of another array element.
+filter() 	It returns the new array containing the elements that pass the provided function conditions.
+find() 	It returns the value of the first element in the given array that satisfies the specified condition.
+findIndex() 	It returns the index value of the first element in the given array that satisfies the specified condition.
+forEach() 	It invokes the provided function once for each element of an array.
+includes() 	It checks whether the given array contains the specified element.
+indexOf() 	It searches the specified element in the given array and returns the index of the first match.
+isArray() 	It tests if the passed value ia an array.
+join() 	It joins the elements of an array as a string.
+keys() 	It creates an iterator object that contains only the keys of the array, then loops through these keys.
+lastIndexOf() 	It searches the specified element in the given array and returns the index of the last match.
+map() 	It calls the specified function for every array element and returns the new array
+of() 	It creates a new array from a variable number of arguments, holding any type of argument.
+pop() 	It removes and returns the last element of an array.
+push() 	It adds one or more elements to the end of an array.
+reverse() 	It reverses the elements of given array.
+reduce(function, initial) 	It executes a provided function for each value from left to right and reduces the array to a single value.
+reduceRight() 	It executes a provided function for each value from right to left and reduces the array to a single value.
+some() 	It determines if any element of the array passes the test of the implemented function.
+shift() 	It removes and returns the first element of an array.
+slice() 	It returns a new array containing the copy of the part of the given array.
+sort() 	It returns the element of the given array in a sorted order.
+splice() 	It add/remove elements to/from the given array.
+toLocaleString() 	It returns a string containing all the elements of a specified array.
+toString() 	It converts the elements of a specified array into string form, without affecting the original array.
+unshift() 	It adds one or more elements in the beginning of the given array.
+values() 	It creates a new iterator object carrying values for each index in the array.
+
+
+<script>  
+var arr1=["C","C++","Python"];  
+var arr2=["Java","JavaScript","Android"];  
+var result=arr1.concat(arr2);  
+document.writeln(result);  
+</script>
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery","Bootstrap"]  
+    // place at 0th position, the element between 1st and 2nd position.  
+    var result=arr.copyWithin(0,1,2);  
+    document.writeln(result);  
+    </script>  
+
+
+    <html>  
+    <head> <h5> Array Methods </h5>  
+    <body>  
+        <script>  
+        var arr=['John','Michael','Embrose','Herry','Lewis'];  
+        var itr=arr.entries();  
+        document.write("After applying the entries method:"+"<br>");  
+      
+        for(var e of itr) //for loop using var.  
+        {  
+            document.write(e+"</br>");  
+        }  
+        </script>  
+    </body>  
+    </head>  
+    </html>  
+
+    <script>  
+    var marks=[50,40,45,37,20];  
+      
+    function check(value)  
+    {  
+      return value>30;  //return false, as marks[4]=20  
+    }  
+      
+    document.writeln(marks.every(check));  
+    </script>  
+
+
+
+re satisfying the specified value.
+
+    <script>  
+    function test(element, index, array) {  
+      return index < 4;  
+    }  
+    document.writeln([21,32,2,43].every(test)); //true  
+    document.writeln([21,32,2,43,35].every(test)); //false  
+    </script>  
+
+
+
+    <html>  
+    <head> <h5> Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    var arr=['a','b',['c','d']]; //given 2D array  
+    var newArr=arr.flat(); //using flat() method  
+    document.write("After flattening the array:  "+newArr);  
+    </script>  
+    </body>  
+    </html>  
+
+
+
+    <html>  
+    <head> <h5> Javascript Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    var arr=[2,4,6,8];  
+    document.write(arr.flatMap(x=>[[x/2]]));  
+    </script>  
+    </body>  
+    </html>  
+
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery"];  
+    var result=arr.fill("Bootstrap");  
+    document.writeln(arr);  
+    </script>  
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery"];  
+    var result=arr.fill("Bootstrap",1);  
+    document.writeln(arr);  
+    </script>  
+
+
+<html>  
+<head> <h5> JavaScript Array Methods </h5> </head>  
+<body>  
+<script>  
+var arr=Array.from("You are viewing an example of string"); //The string will get converted to an array.  
+document.write("The resultant is: <br>" +arr);  
+</script>  
+</body>  
+</html>
+
+
+
+<script>  
+var marks=[50,40,45,37,20];  
+  
+function check(value)  
+{  
+  return value>30;    
+}  
+  
+document.writeln(marks.filter(check));  
+</script>
+
+
+
+    <script>  
+    var arr=[5,22,19,25,34];  
+    var result=arr.find(x=>x>20);  
+    document.writeln(result)  
+    </script>  
+
+
+
+<script>  
+var arr=[5,22,19,25,34];  
+var result=arr.findIndex(x=>x>20);  
+document.writeln(result)  
+</script> 
+
+    <script>  
+    var arr = ["C", "C++", "Python"];  
+      
+    arr.forEach(function(fetch) {  
+      document.writeln(fetch);  
+    });  
+    </script>  
+
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery"]  
+    var result=arr.includes("AngularJS");  
+    document.writeln(result);  
+    </script>  
+
+<script>  
+var arr=["C","C++","Python","C++","Java"];  
+var result= arr.indexOf("C++");  
+document.writeln(result);  
+</script>
+
+<html>  
+<head> <h5> JavaScript Array Methods </h5> </head>  
+<body>  
+<script>  
+document.write(Array.isArray(1,2,3,4)); //Testing the passed values.  
+</script>  
+</body>  
+</html> 
+
+
+
+    <script>  
+    var arr=["AngularJs","Node.js","JQuery"]  
+    var result=arr.join()  
+    document.write(result);  
+    </script>  
+
+
+    <script>  
+    var arr=["AngularJs","Node.js","JQuery"]  
+    var result=arr.join('-')  
+    document.write(result);  
+    </script>  
+
+
+    <httml>  
+    <head> <h5> JavaScript Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    let arr=['Mon','Tue','Wed','Thu','Sat'];   
+    let itr=arr.keys();  
+    document.write(itr+"<br>");  
+    //Looping through each key.  
+    for (let key of itr) {  
+      document.write(key+"<br>");  
+    }  
+    </script>  
+    </body>  
+    </html>  
+
+
+    <script>  
+    var arr=["C","C++","Python","C++","Java"];  
+    var result= arr.lastIndexOf("C++");  
+    document.writeln(result);  
+    </script>  
+
+
+    <script>  
+    var arr=[2.1,3.5,4.7];  
+    var result=arr.map(Math.round);  
+    document.writeln(result);  
+    </script>  
+
+
+    <html>  
+    <head>JavaScript Array Methods </head>  
+    <body>  
+    <script>  
+    document.write(Array.of(1,2,3,4)); //values separated by commas.  
+    </script>  
+    </body>  
+    </html>  
+
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery"];  
+    document.writeln("Orginal array: "+arr+"<br>");  
+    document.writeln("Extracted element: "+arr.pop()+"<br>");  
+    document.writeln("Remaining elements: "+ arr);  
+    </script>  
+
+
+    <script>  
+    var arr=["AngularJS","Node.js"];  
+    arr.push("JQuery");  
+    document.writeln(arr);  
+    </script>  
+
+<script>  
+var arr=["AngulaJS","Node.js","JQuery"];  
+var rev=arr.reverse();  
+document.writeln(rev);  
+</script>
+
+
+    <html>  
+    <head> <h5> Javascript Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    var arr=[2,3,1,5];  
+    var a=arr.reduce(function (accumulator,currentValue) {  
+        return accumulator+currentValue;  
+        },0);  
+    document.write("The sum of the array elements is: "+a);  
+    </script>  
+    </body>  
+    </html>  
+
+
+    <html>  
+    <head> <h5> JavaScript Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    var arr=[21,2,1,4];  
+    var calc=arr.reduceRight(function(x,y){  
+    return (x+y);  
+    });  
+    document.write(" The sum of the elements is: " +calc);  
+    </script>  
+    </body>  
+    </html>  
+
+
+    <html>  
+    <head> <h5> JavaScript Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    var arr=[12,81,23,34];  
+    function test(arr)  
+    {  
+        return(arr>80);  
+    } // test() will return a true value.  
+    var ajen=arr.some(test);  
+    document.write("Its "+ajen);  
+    </script>  
+    </body>  
+    </html>  
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery"];  
+    var result=arr.shift();  
+    document.writeln(result);  
+    </script>  
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery","Bootstrap"]  
+    var result=arr.slice(1,2);  
+    document.writeln(result);  
+    </script>  
+
+
+    <script>  
+    var arr=["AngularJS","Node.js","JQuery","Bootstrap"]  
+    var result=arr.sort();  
+    document.writeln(result);  
+    </script>  
+
+
+    <script>  
+    var arr=["Monday","Tuesday","Thursday","Friday"];  
+    var result=arr.splice(2,0,"Wednesday")  
+    document.writeln(arr);  
+    </script>  
+
+<html>  
+<head> <h5> Javascript Array Methods </h5> </head>  
+<body>  
+<script>  
+var arr=["ram","shyam","Heera"]; // an array is defined.  
+var str=arr.toLocaleString(); //using array toLocaleString() method  
+document.write("The array is represented in the string form as:  "+str); // This will  return the array elements in the form of string.  
+</script>  
+</body>  
+</html> 
+
+    <!DOCTYPE html>  
+    <html>  
+    <head> <h3>Array Methods</h3> </br>  
+    </head>  
+    <body>  
+    <script>  
+                 var arr=['j','a','v','a','T','p','o','i','n','t']; //array elements  
+                 var str=arr.toString(); //toString() method implementation  
+                  document.write("After converting into string:  "+str);  
+    </script>  
+    </body>  
+    </html>  
+
+
+    <script>  
+    var arr=["AngularJS","Node.js"];  
+    var result=arr.unshift("JQuery");  
+    document.writeln(arr);   
+    </script>  
+
+    <html>  
+    <head> <h5> Javascript Array Methods </h5> </head>  
+    <body>  
+    <script>  
+    var arr = ["John","Mary","Tom","Harry","Sheero"]; //Intializing array elements  
+    var itr = arr.values(); //Using values() method.  
+    document.write("The array elements are:<br>");  
+    for (let x of itr) {   
+        document.write("<br>"+x);  
+    }  //This iterates the array elements through its index value.  
+    </script>  
+    </body>  
+    </html>  
+
+
+
+JavaScript String
+
+The JavaScript string is an object that represents a sequence of characters.
+
+There are 2 ways to create string in JavaScript
+
+    By string literal
+    By string object (using new keyword)
+
+1) By string literal
+
+The string literal is created using double quotes. The syntax of creating string using string literal is given below:
+
+    var stringname="string value";  
+
+Let's see the simple example of creating string literal.
+
+    <script>  
+    var str="This is string literal";  
+    document.write(str);  
+    </script>  
+
+Test it Now
+
+Output:
+
+This is string literal
+
+2) By string object (using new keyword)
+
+The syntax of creating string object using new keyword is given below:
+
+    var stringname=new String("string literal");  
+
+Here, new keyword is used to create instance of string.
+
+Let's see the example of creating string in JavaScript by new keyword.
+
+    <script>  
+    var stringname=new String("hello javascript string");  
+    document.write(stringname);  
+    </script>  
+
+Test it Now
+
+Output:
+
+hello javascript string
+
+JavaScript String Methods
+
+Let's see the list of JavaScript string methods with examples.
+Methods 	Description
+charAt() 	It provides the char value present at the specified index.
+charCodeAt() 	It provides the Unicode value of a character present at the specified index.
+concat() 	It provides a combination of two or more strings.
+indexOf() 	It provides the position of a char value present in the given string.
+lastIndexOf() 	It provides the position of a char value present in the given string by searching a character from the last position.
+search() 	It searches a specified regular expression in a given string and returns its position if a match occurs.
+match() 	It searches a specified regular expression in a given string and returns that regular expression if a match occurs.
+replace() 	It replaces a given string with the specified replacement.
+substr() 	It is used to fetch the part of the given string on the basis of the specified starting position and length.
+substring() 	It is used to fetch the part of the given string on the basis of the specified index.
+slice() 	It is used to fetch the part of the given string. It allows us to assign positive as well negative index.
+toLowerCase() 	It converts the given string into lowercase letter.
+toLocaleLowerCase() 	It converts the given string into lowercase letter on the basis of host?s current locale.
+toUpperCase() 	It converts the given string into uppercase letter.
+toLocaleUpperCase() 	It converts the given string into uppercase letter on the basis of host?s current locale.
+toString() 	It provides a string representing the particular object.
+valueOf() 	It provides the primitive value of string object.
+split() 	It splits a string into substring array, then returns that newly created array.
+trim() 	It trims the white space from the left and right side of the string.
+1) JavaScript String charAt(index) Method
+
+The JavaScript String charAt() method returns the character at the given index.
+
+    <script>  
+    var str="javascript";  
+    document.write(str.charAt(2));  
+    </script>  
+
+Test it Now
+
+Output:
+
+v
+
+2) JavaScript String concat(str) Method
+
+The JavaScript String concat(str) method concatenates or joins two strings.
+
+    <script>  
+    var s1="javascript ";  
+    var s2="concat example";  
+    var s3=s1.concat(s2);  
+    document.write(s3);  
+    </script>  
+
+Test it Now
+
+Output:
+
+javascript concat example
+
+3) JavaScript String indexOf(str) Method
+
+The JavaScript String indexOf(str) method returns the index position of the given string.
+
+    <script>  
+    var s1="javascript from javatpoint indexof";  
+    var n=s1.indexOf("from");  
+    document.write(n);  
+    </script>  
+
+Test it Now
+
+Output:
+
+11
+
+4) JavaScript String lastIndexOf(str) Method
+
+The JavaScript String lastIndexOf(str) method returns the last index position of the given string.
+
+    <script>  
+    var s1="javascript from javatpoint indexof";  
+    var n=s1.lastIndexOf("java");  
+    document.write(n);  
+    </script>  
+
+Test it Now
+
+Output:
+
+16
+
+5) JavaScript String toLowerCase() Method
+
+The JavaScript String toLowerCase() method returns the given string in lowercase letters.
+
+    <script>  
+    var s1="JavaScript toLowerCase Example";  
+    var s2=s1.toLowerCase();  
+    document.write(s2);  
+    </script>  
+
+Test it Now
+
+Output:
+
+javascript tolowercase example
+
+6) JavaScript String toUpperCase() Method
+
+The JavaScript String toUpperCase() method returns the given string in uppercase letters.
+
+    <script>  
+    var s1="JavaScript toUpperCase Example";  
+    var s2=s1.toUpperCase();  
+    document.write(s2);  
+    </script>  
+
+Test it Now
+
+Output:
+
+JAVASCRIPT TOUPPERCASE EXAMPLE
+
+7) JavaScript String slice(beginIndex, endIndex) Method
+
+The JavaScript String slice(beginIndex, endIndex) method returns the parts of string from given beginIndex to endIndex. In slice() method, beginIndex is inclusive and endIndex is exclusive.
+
+    <script>  
+    var s1="abcdefgh";  
+    var s2=s1.slice(2,5);  
+    document.write(s2);  
+    </script>  
+
+Test it Now
+
+Output:
+
+cde
+
+8) JavaScript String trim() Method
+
+The JavaScript String trim() method removes leading and trailing whitespaces from the string.
+
+    <script>  
+    var s1="     javascript trim    ";  
+    var s2=s1.trim();  
+    document.write(s2);  
+    </script>  
+
+Test it Now
+
+Output:
+
+javascript trim
+
+9) JavaScript String split() Method
+
+    <script>  
+    var str="This is JavaTpoint website";  
+    document.write(str.split(" ")); //splits the given string.  
+    </script>  
+
+
+
+JavaScript Math
+
+The JavaScript math object provides several constants and methods to perform mathematical operation. Unlike date object, it doesn't have constructors.
+JavaScript Math Methods
+
+Let's see the list of JavaScript Math methods with description.
+Methods 	Description
+abs() 	It returns the absolute value of the given number.
+acos() 	It returns the arccosine of the given number in radians.
+asin() 	It returns the arcsine of the given number in radians.
+atan() 	It returns the arc-tangent of the given number in radians.
+cbrt() 	It returns the cube root of the given number.
+ceil() 	It returns a smallest integer value, greater than or equal to the given number.
+cos() 	It returns the cosine of the given number.
+cosh() 	It returns the hyperbolic cosine of the given number.
+exp() 	It returns the exponential form of the given number.
+floor() 	It returns largest integer value, lower than or equal to the given number.
+hypot() 	It returns square root of sum of the squares of given numbers.
+log() 	It returns natural logarithm of a number.
+max() 	It returns maximum value of the given numbers.
+min() 	It returns minimum value of the given numbers.
+pow() 	It returns value of base to the power of exponent.
+random() 	It returns random number between 0 (inclusive) and 1 (exclusive).
+round() 	It returns closest integer value of the given number.
+sign() 	It returns the sign of the given number
+sin() 	It returns the sine of the given number.
+sinh() 	It returns the hyperbolic sine of the given number.
+sqrt() 	It returns the square root of the given number
+tan() 	It returns the tangent of the given number.
+tanh() 	It returns the hyperbolic tangent of the given number.
+trunc() 	It returns an integer part of the given number.
+Math.sqrt(n)
+
+The JavaScript math.sqrt(n) method returns the square root of the given number.
+
+    Square Root of 17 is: <span id="p1"></span>    
+    <script>    
+    document.getElementById('p1').innerHTML=Math.sqrt(17);    
+    </script>    
+
+Test it Now
+
+Output:
+Square Root of 17 is: 4.123105625617661
+Math.random()
+
+The JavaScript math.random() method returns the random number between 0 to 1.
+
+    Random Number is: <span id="p2"></span>    
+    <script>    
+    document.getElementById('p2').innerHTML=Math.random();    
+    </script>   
+
+Test it Now
+
+Output:
+Random Number is: 0.4541655749049833
+Math.pow(m,n)
+
+The JavaScript math.pow(m,n) method returns the m to the power of n that is mn.
+
+    3 to the power of 4 is: <span id="p3"></span>    
+    <script>    
+    document.getElementById('p3').innerHTML=Math.pow(3,4);    
+    </script>    
+
+Test it Now
+
+Output:
+3 to the power of 4 is: 81
+Math.floor(n)
+
+The JavaScript math.floor(n) method returns the lowest integer for the given number. For example 3 for 3.7, 5 for 5.9 etc.
+
+    Floor of 4.6 is: <span id="p4"></span>    
+    <script>    
+    document.getElementById('p4').innerHTML=Math.floor(4.6);    
+    </script>    
+
+Test it Now
+
+Output:
+Floor of 4.6 is: 4
+Math.ceil(n)
+
+The JavaScript math.ceil(n) method returns the largest integer for the given number. For example 4 for 3.7, 6 for 5.9 etc.
+
+    Ceil of 4.6 is: <span id="p5"></span>    
+    <script>    
+    document.getElementById('p5').innerHTML=Math.ceil(4.6);    
+    </script>    
+
+Test it Now
+
+Output:
+Ceil of 4.6 is: 5
+Math.round(n)
+
+The JavaScript math.round(n) method returns the rounded integer nearest for the given number. If fractional part is equal or greater than 0.5, it goes to upper value 1 otherwise lower value 0. For example 4 for 3.7, 3 for 3.3, 6 for 5.9 etc.
+
+    Round of 4.3 is: <span id="p6"></span><br>    
+    Round of 4.7 is: <span id="p7"></span>    
+    <script>    
+    document.getElementById('p6').innerHTML=Math.round(4.3);   
+    document.getElementById('p7').innerHTML=Math.round(4.7);    
+    </script>    
+
+Test it Now
+
+Output:
+Round of 4.3 is: 4
+Round of 4.7 is: 5
+Math.abs(n)
+
+The JavaScript math.abs(n) method returns the absolute value for the given number. For example 4 for -4, 6.6 for -6.6 etc.
+
+    Absolute value of -4 is: <span id="p8"></span>      
+    <script>      
+    document.getElementById('p8').innerHTML=Math.abs(-4);      
+    </script>   
+
+Test it Now
+
+Output:
+Absolute value of -4 is: 4
+Next TopicJavaScript Number 
+
+
+JavaScript Number Object
+
+The JavaScript number object enables you to represent a numeric value. It may be integer or floating-point. JavaScript number object follows IEEE standard to represent the floating-point numbers.
+
+By the help of Number() constructor, you can create number object in JavaScript. For example:
+
+    var n=new Number(value);  
+
+If value can't be converted to number, it returns NaN(Not a Number) that can be checked by isNaN() method.
+
+You can direct assign a number to a variable also. For example:
+
+    var x=102;//integer value  
+    var y=102.7;//floating point value  
+    var z=13e4;//exponent value, output: 130000  
+    var n=new Number(16);//integer value by number object  
+
+Test it Now
+
+Output:
+
+102 102.7 130000 16  
+
+JavaScript Number Constants
+
+Let's see the list of JavaScript number constants with description.
+Constant	Description
+MIN_VALUE	returns the largest minimum value.
+MAX_VALUE	returns the largest maximum value.
+POSITIVE_INFINITY	returns positive infinity, overflow value.
+NEGATIVE_INFINITY	returns negative infinity, overflow value.
+NaN	represents "Not a Number" value.
+JavaScript Number Methods
+
+Let's see the list of JavaScript number methods with their description.
+Methods 	Description
+isFinite() 	It determines whether the given value is a finite number.
+isInteger() 	It determines whether the given value is an integer.
+parseFloat() 	It converts the given string into a floating point number.
+parseInt() 	It converts the given string into an integer number.
+toExponential() 	It returns the string that represents exponential notation of the given number.
+toFixed() 	It returns the string that represents a number with exact digits after a decimal point.
+toPrecision() 	It returns the string representing a number of specified precision.
+toString() 	It returns the given number in the form of string.
+
+
+JavaScript Boolean
+
+JavaScript Boolean is an object that represents value in two states: true or false. You can create the JavaScript Boolean object by Boolean() constructor as given below.
+
+    Boolean b=new Boolean(value);  
+
+The default value of JavaScript Boolean object is false.
+JavaScript Boolean Example
+
+    <script>  
+    document.write(10<20);//true  
+    document.write(10<5);//false  
+    </script>  
+
+JavaScript Boolean Properties
+Property	Description
+constructor	returns the reference of Boolean function that created Boolean object.
+prototype	enables you to add properties and methods in Boolean prototype.
+JavaScript Boolean Methods
+Method	Description
+toSource()	returns the source of Boolean object as a string.
+toString()	converts Boolean into String.
+valueOf()	converts other type into Boolean.
+
+
+JavaScript Date Object
+
+The JavaScript date object can be used to get year, month and day. You can display a timer on the webpage by the help of JavaScript date object.
+
+You can use different Date constructors to create date object. It provides methods to get and set day, month, year, hour, minute and seconds.
+Constructor
+
+You can use 4 variant of Date constructor to create date object.
+
+    Date()
+    Date(milliseconds)
+    Date(dateString)
+    Date(year, month, day, hours, minutes, seconds, milliseconds)
+
+JavaScript Date Methods
+
+Let's see the list of JavaScript date methods with their description.
+Methods 	Description
+getDate() 	It returns the integer value between 1 and 31 that represents the day for the specified date on the basis of local time.
+getDay() 	It returns the integer value between 0 and 6 that represents the day of the week on the basis of local time.
+getFullYears() 	It returns the integer value that represents the year on the basis of local time.
+getHours() 	It returns the integer value between 0 and 23 that represents the hours on the basis of local time.
+getMilliseconds() 	It returns the integer value between 0 and 999 that represents the milliseconds on the basis of local time.
+getMinutes() 	It returns the integer value between 0 and 59 that represents the minutes on the basis of local time.
+getMonth() 	It returns the integer value between 0 and 11 that represents the month on the basis of local time.
+getSeconds() 	It returns the integer value between 0 and 60 that represents the seconds on the basis of local time.
+getUTCDate() 	It returns the integer value between 1 and 31 that represents the day for the specified date on the basis of universal time.
+getUTCDay() 	It returns the integer value between 0 and 6 that represents the day of the week on the basis of universal time.
+getUTCFullYears() 	It returns the integer value that represents the year on the basis of universal time.
+getUTCHours() 	It returns the integer value between 0 and 23 that represents the hours on the basis of universal time.
+getUTCMinutes() 	It returns the integer value between 0 and 59 that represents the minutes on the basis of universal time.
+getUTCMonth() 	It returns the integer value between 0 and 11 that represents the month on the basis of universal time.
+getUTCSeconds() 	It returns the integer value between 0 and 60 that represents the seconds on the basis of universal time.
+setDate() 	It sets the day value for the specified date on the basis of local time.
+setDay() 	It sets the particular day of the week on the basis of local time.
+setFullYears() 	It sets the year value for the specified date on the basis of local time.
+setHours() 	It sets the hour value for the specified date on the basis of local time.
+setMilliseconds() 	It sets the millisecond value for the specified date on the basis of local time.
+setMinutes() 	It sets the minute value for the specified date on the basis of local time.
+setMonth() 	It sets the month value for the specified date on the basis of local time.
+setSeconds() 	It sets the second value for the specified date on the basis of local time.
+setUTCDate() 	It sets the day value for the specified date on the basis of universal time.
+setUTCDay() 	It sets the particular day of the week on the basis of universal time.
+setUTCFullYears() 	It sets the year value for the specified date on the basis of universal time.
+setUTCHours() 	It sets the hour value for the specified date on the basis of universal time.
+setUTCMilliseconds() 	It sets the millisecond value for the specified date on the basis of universal time.
+setUTCMinutes() 	It sets the minute value for the specified date on the basis of universal time.
+setUTCMonth() 	It sets the month value for the specified date on the basis of universal time.
+setUTCSeconds() 	It sets the second value for the specified date on the basis of universal time.
+toDateString() 	It returns the date portion of a Date object.
+toISOString() 	It returns the date in the form ISO format string.
+toJSON() 	It returns a string representing the Date object. It also serializes the Date object during JSON serialization.
+toString() 	It returns the date in the form of string.
+toTimeString() 	It returns the time portion of a Date object.
+toUTCString() 	It converts the specified date in the form of string using UTC time zone.
+valueOf() 	It returns the primitive value of a Date object.
+JavaScript Date Example
+
+Let's see the simple example to print date object. It prints date and time both.
+
+    Current Date and Time: <span id="txt"></span>  
+    <script>  
+    var today=new Date();  
+    document.getElementById('txt').innerHTML=today;  
+    </script>  
+
+Test it Now
+
+Output:
+
+Current Date and Time: Wed May 25 2022 08:38:09 GMT+0530 (India Standard Time)  
+  
+
+Let's see another code to print date/month/year.
+
+    <script>  
+    var date=new Date();  
+    var day=date.getDate();  
+    var month=date.getMonth()+1;  
+    var year=date.getFullYear();  
+    document.write("<br>Date is: "+day+"/"+month+"/"+year);  
+    </script>  
+
+Output:
+
+Date is: 25/5/2022  
+
+JavaScript Current Time Example
+
+Let's see the simple example to print current time of system.
+
+    Current Time: <span id="txt"></span>  
+    <script>  
+    var today=new Date();  
+    var h=today.getHours();  
+    var m=today.getMinutes();  
+    var s=today.getSeconds();  
+    document.getElementById('txt').innerHTML=h+":"+m+":"+s;  
+    </script>  
+
+Test it Now
+
+Output:
+
+Current Time: 8:38:9
+
+JavaScript Digital Clock Example
+
+Let's see the simple example to display digital clock using JavaScript date object.
+
+There are two ways to set interval in JavaScript: by setTimeout() or setInterval() method.
+
+    Current Time: <span id="txt"></span>  
+    <script>  
+    window.onload=function(){getTime();}  
+    function getTime(){  
+    var today=new Date();  
+    var h=today.getHours();  
+    var m=today.getMinutes();  
+    var s=today.getSeconds();  
+    // add a zero in front of numbers<10  
+    m=checkTime(m);  
+    s=checkTime(s);  
+    document.getElementById('txt').innerHTML=h+":"+m+":"+s;  
+    setTimeout(function(){getTime()},1000);  
+JavaScript Boolean
+
+JavaScript Boolean is an object that represents value in two states: true or false. You can create the JavaScript Boolean object by Boolean() constructor as given below.
+
+    Boolean b=new Boolean(value);  
+
+The default value of JavaScript Boolean object is false.
+JavaScript Boolean Example
+
+    <script>  
+    document.write(10<20);//true  
+    document.write(10<5);//false  
+    </script>  
+
+JavaScript Boolean Properties
+Property	Description
+constructor	returns the reference of Boolean function that created Boolean object.
+prototype	enables you to add properties and methods in Boolean prototype.
+JavaScript Boolean Methods
+Method	Description
+toSource()	returns the source of Boolean object as a string.
+toString()	converts Boolean into String.
+valueOf()	converts other type into Boolean.
+
+    }  
+    //setInterval("getTime()",1000);//another way  
+    function checkTime(i){  
+    if (i<10){  
+      i="0" + i;  
+     }  
+    return i;  
+    }  
+    </script>  
+
+Test it Now
+
+Output:
+
+Current Time: 8:38:52
+
+
+
+
+
+
+
+
+JavaScript Boolean
+
+JavaScript Boolean is an object that represents value in two states: true or false. You can create the JavaScript Boolean object by Boolean() constructor as given below.
+
+    Boolean b=new Boolean(value);  
+
+The default value of JavaScript Boolean object is false.
+JavaScript Boolean Example
+
+    <script>  
+    document.write(10<20);//true  
+    document.write(10<5);//false  
+    </script>  
+
+JavaScript Boolean Properties
+Property	Description
+constructor	returns the reference of Boolean function that created Boolean object.
+prototype	enables you to add properties and methods in Boolean prototype.
+JavaScript Boolean Methods
+Method	Description
+toSource()	returns the source of Boolean object as a string.
+toString()	converts Boolean into String.
+valueOf()	converts other type into Boolean.
+
+
+OOPS
+
+
+JavaScript Classes
+
+In JavaScript, classes are the special type of functions. We can define the class just like function declarations and function expressions.
+
+The JavaScript class contains various class members within a body including methods or constructor. The class is executed in strict mode. So, the code containing the silent error or mistake throws an error.
+
+The class syntax contains two components:
+
+    Class declarations
+    Class expressions
+
+Class Declarations
+
+A class can be defined by using a class declaration. A class keyword is used to declare a class with any particular name. According to JavaScript naming conventions, the name of the class always starts with an uppercase letter.
+Class Declarations Example
+
+Let's see a simple example of declaring the class.
+
+    <script>  
+    //Declaring class  
+    class Employee  
+      {  
+    //Initializing an object  
+        constructor(id,name)  
+        {  
+          this.id=id;  
+          this.name=name;  
+        }  
+    //Declaring method  
+        detail()  
+        {  
+      document.writeln(this.id+" "+this.name+"<br>")  
+        }  
+      }  
+    //passing object to a variable   
+    var e1=new Employee(101,"Martin Roy");  
+    var e2=new Employee(102,"Duke William");  
+    e1.detail(); //calling method  
+    e2.detail();  
+    </script>  
+
+Test it Now
+
+Output:
+
+101 Martin Roy
+102 Duke William
+
+Class Declarations Example: Hoisting
+
+Unlike function declaration, the class declaration is not a part of JavaScript hoisting. So, it is required to declare the class before invoking it.
+
+Let's see an example.
+
+    <script>  
+    //Here, we are invoking the class before declaring it.  
+    var e1=new Employee(101,"Martin Roy");  
+    var e2=new Employee(102,"Duke William");  
+    e1.detail(); //calling method  
+    e2.detail();  
+      
+    //Declaring class  
+    class Employee  
+      {  
+    //Initializing an object  
+        constructor(id,name)  
+        {  
+          this.id=id;  
+          this.name=name;  
+        }  
+        detail()  
+        {  
+      document.writeln(this.id+" "+this.name+"<br>")  
+        }  
+      }  
+    </script>  
+
+Test it Now
+
+Output:
+JavaScript OOPs Classes
+Class Declarations Example: Re-declaring Class
+
+A class can be declared once only. If we try to declare class more than one time, it throws an error.
+
+Let's see an example.
+
+    <script>  
+    //Declaring class  
+    class Employee  
+      {  
+    //Initializing an object  
+        constructor(id,name)  
+        {  
+          this.id=id;  
+          this.name=name;  
+        }  
+        detail()  
+        {  
+      document.writeln(this.id+" "+this.name+"<br>")  
+        }  
+      }  
+    //passing object to a variable   
+    var e1=new Employee(101,"Martin Roy");  
+    var e2=new Employee(102,"Duke William");  
+    e1.detail(); //calling method  
+    e2.detail();  
+    //Re-declaring class  
+    class Employee  
+      {  
+      }  
+    </script>  
+
+Test it Now
+
+Output:
+
+
+
+
+OOPS
+
+Class expressions
+
+Another way to define a class is by using a class expression. Here, it is not mandatory to assign the name of the class. So, the class expression can be named or unnamed. The class expression allows us to fetch the class name. However, this will not be possible with class declaration.
+Unnamed Class Expression
+
+The class can be expressed without assigning any name to it.
+
+Let's see an example.
+
+    <script>  
+    var emp = class {  
+      constructor(id, name) {  
+        this.id = id;  
+        this.name = name;  
+      }  
+    };  
+    document.writeln(emp.name);  
+    </script>  
+
+Test it Now
+
+Output:
+
+emp
+
+Class Expression Example: Re-declaring Class
+
+Unlike class declaration, the class expression allows us to re-declare the same class. So, if we try to declare the class more than one time, it throws an error.
+
+    <script>  
+    //Declaring class  
+    var emp=class   
+      {  
+    //Initializing an object  
+        constructor(id,name)  
+        {  
+          this.id=id;  
+          this.name=name;  
+        }  
+    //Declaring method      
+    detail()  
+        {  
+      document.writeln(this.id+" "+this.name+"<br>")  
+        }  
+      }  
+    //passing object to a variable   
+    var e1=new emp(101,"Martin Roy");  
+    var e2=new emp(102,"Duke William");  
+    e1.detail(); //calling method  
+    e2.detail();  
+      
+    //Re-declaring class  
+    var emp=class   
+      {  
+    //Initializing an object  
+        constructor(id,name)  
+        {  
+          this.id=id;  
+          this.name=name;  
+        }  
+        detail()  
+        {  
+      document.writeln(this.id+" "+this.name+"<br>")  
+        }  
+      }  
+    //passing object to a variable   
+    var e1=new emp(103,"James Bella");  
+    var e2=new emp(104,"Nick Johnson");  
+    e1.detail(); //calling method  
+    e2.detail();  
+    </script>  
+
+Test it Now
+
+Output:
+
+101 Martin Roy
+102 Duke William
+103 James Bella
+104 Nick Johnson
+
+Named Class Expression Example
+
+We can express the class with the particular name. Here, the scope of the class name is up to the class body. The class is retrieved using class.name property.
+
+    <script>  
+    var emp = class Employee {  
+      constructor(id, name) {  
+        this.id = id;  
+        this.name = name;  
+      }  
+    };  
+    document.writeln(emp.name);  
+    /*document.writeln(Employee.name);  
+    Error occurs on console:  
+    "ReferenceError: Employee is not defined  
+    */  
+    </script>  
+
+Test it Now
+
+Output:
+
+
+
+JavaScript Objects
+
+A javaScript object is an entity having state and behavior (properties and method). For example: car, pen, bike, chair, glass, keyboard, monitor etc.
+
+JavaScript is an object-based language. Everything is an object in JavaScript.
+
+JavaScript is template based not class based. Here, we don't create class to get the object. But, we direct create objects.
+Creating Objects in JavaScript
+
+There are 3 ways to create objects.
+
+    By object literal
+    By creating instance of Object directly (using new keyword)
+    By using an object constructor (using new keyword)
+
+1) JavaScript Object by object literal
+
+The syntax of creating object using object literal is given below:
+
+    object={property1:value1,property2:value2.....propertyN:valueN}  
+
+As you can see, property and value is separated by : (colon).
+
+Let’s see the simple example of creating object in JavaScript.
+
+    <script>  
+    emp={id:102,name:"Shyam Kumar",salary:40000}  
+    document.write(emp.id+" "+emp.name+" "+emp.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+102 Shyam Kumar 40000
+2) By creating instance of Object
+
+The syntax of creating object directly is given below:
+
+    var objectname=new Object();  
+
+Here, new keyword is used to create object.
+
+Let’s see the example of creating object directly.
+
+    <script>  
+    var emp=new Object();  
+    emp.id=101;  
+    emp.name="Ravi Malik";  
+    emp.salary=50000;  
+    document.write(emp.id+" "+emp.name+" "+emp.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+101 Ravi 50000
+3) By using an Object constructor
+
+Here, you need to create function with arguments. Each argument value can be assigned in the current object by using this keyword.
+
+The this keyword refers to the current object.
+
+The example of creating object by object constructor is given below.
+
+    <script>  
+    function emp(id,name,salary){  
+    this.id=id;  
+    this.name=name;  
+    this.salary=salary;  
+    }  
+    e=new emp(103,"Vimal Jaiswal",30000);  
+      
+    document.write(e.id+" "+e.name+" "+e.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+103 Vimal Jaiswal 30000
+Defining method in JavaScript Object
+
+We can define method in JavaScript object. But before defining method, we need to add property in the function with same name as method.
+
+The example of defining method in object is given below.
+
+    <script>  
+    function emp(id,name,salary){  
+    this.id=id;  
+    this.name=name;  
+    this.salary=salary;  
+      
+    this.changeSalary=changeSalary;  
+    function changeSalary(otherSalary){  
+    this.salary=otherSalary;  
+    }  
+    }  
+    e=new emp(103,"Sonoo Jaiswal",30000);  
+    document.write(e.id+" "+e.name+" "+e.salary);  
+    e.changeSalary(45000);  
+    document.write("<br>"+e.id+" "+e.name+" "+e.salary);  
+    </script>  
+
+Test it Now
+Output of the above example
+103 Sonoo Jaiswal 30000
+103 Sonoo Jaiswal 45000
+JavaScript Object Methods
+
+The various methods of Object are as follows:
+S.No 	Methods 	Description
+1 	Object.assign() 	This method is used to copy enumerable and own properties from a source object to a target object
+2 	Object.create() 	This method is used to create a new object with the specified prototype object and properties.
+3 	Object.defineProperty() 	This method is used to describe some behavioral attributes of the property.
+4 	Object.defineProperties() 	This method is used to create or configure multiple object properties.
+5 	Object.entries() 	This method returns an array with arrays of the key, value pairs.
+6 	Object.freeze() 	This method prevents existing properties from being removed.
+7 	Object.getOwnPropertyDescriptor() 	This method returns a property descriptor for the specified property of the specified object.
+8 	Object.getOwnPropertyDescriptors() 	This method returns all own property descriptors of a given object.
+9 	Object.getOwnPropertyNames() 	This method returns an array of all properties (enumerable or not) found.
+10 	Object.getOwnPropertySymbols() 	This method returns an array of all own symbol key properties.
+11 	Object.getPrototypeOf() 	This method returns the prototype of the specified object.
+12 	Object.is() 	This method determines whether two values are the same value.
+13 	Object.isExtensible() 	This method determines if an object is extensible
+14 	Object.isFrozen() 	This method determines if an object was frozen.
+15 	Object.isSealed() 	This method determines if an object is sealed.
+16 	Object.keys() 	This method returns an array of a given object's own property names.
+17 	Object.preventExtensions() 	This method is used to prevent any extensions of an object.
+18 	Object.seal() 	This method prevents new properties from being added and marks all existing properties as non-configurable.
+19 	Object.setPrototypeOf() 	This method sets the prototype of a specified object to another object.
+20 	Object.values() 	This method returns an array of values.
+
+JavaScript Prototype Object
+
+JavaScript is a prototype-based language that facilitates the objects to acquire properties and features from one another. Here, each object contains a prototype object.
+
+In JavaScript, whenever a function is created the prototype property is added to that function automatically. This property is a prototype object that holds a constructor property.
+Syntax:
+
+    ClassName.prototype.methodName  
+
+What is the requirement of a prototype object?
+
+Whenever an object is created in JavaScript, its corresponding functions are loaded into memory. So, a new copy of the function is created on each object creation.
+
+In a prototype-based approach, all the objects share the same function. This ignores the requirement of creating a new copy of function for each object. Thus, the functions are loaded once into the memory.
+Prototype Chaining
+
+In JavaScript, each object contains a prototype object that acquires properties and methods from it. Again an object's prototype object may contain a prototype object that also acquires properties and methods, and so on. It can be seen as prototype chaining.
+JavaScript oops Prototype Object
+JavaScript Prototype Object Example 1
+
+Let's see an example to add a new method to the constructor function.
+
+    <script>  
+    function Employee(firstName,lastName)  
+    {  
+      this.firstName=firstName;  
+      this.lastName=lastName;  
+    }  
+      
+    Employee.prototype.fullName=function()  
+      {  
+        return this.firstName+" "+this.lastName;  
+      }  
+      
+    var employee1=new Employee("Martin","Roy");  
+    var employee2=new Employee("Duke", "William");  
+    document.writeln(employee1.fullName()+"<br>");  
+    document.writeln(employee2.fullName());  
+    </script>  
+
+Test it Now
+
+Output:
+
+Martin Roy
+Duke William
+
+Example 2
+
+Let's see an example to add a new property to the constructor function.
+
+    <script>  
+    function Employee(firstName,lastName)  
+    {  
+      this.firstName=firstName;  
+      this.lastName=lastName;  
+    }  
+      
+    Employee.prototype.company="Javatpoint"  
+      
+    var employee1=new Employee("Martin","Roy");  
+    var employee2=new Employee("Duke", "William");  
+    document.writeln(employee1.firstName+" "+employee1.lastName+" "+employee1.company+"<br>");  
+    document.writeln(employee2.firstName+" "+employee2.lastName+" "+employee2.company);  
+    </script>  
+
+Test it Now
+
+Output:
+
+Martin Roy Javatpoint
+Duke William Javatpoint
+
+JavaScript Constructor Method
+
+A JavaScript constructor method is a special type of method which is used to initialize and create an object. It is called when memory is allocated for an object.
+Points to remember
+
+    The constructor keyword is used to declare a constructor method.
+    The class can contain one constructor method only.
+    JavaScript allows us to use parent class constructor through super keyword.
+
+Constructor Method Example
+
+Let's see a simple example of a constructor method.
+
+    <script>  
+    class Employee {  
+      constructor() {  
+        this.id=101;  
+        this.name = "Martin Roy";  
+      }   
+    }  
+    var emp = new Employee();  
+    document.writeln(emp.id+" "+emp.name);  
+    </script>  
+
+Test it Now
+
+Output:
+
+101 Martin Roy
+
+Constructor Method Example: super keyword
+
+The super keyword is used to call the parent class constructor. Let's see an example.
+
+    <script>  
+    class CompanyName  
+    {  
+      constructor()  
+      {  
+        this.company="Javatpoint";  
+      }  
+    }  
+    class Employee extends CompanyName {  
+      constructor(id,name) {  
+       super();  
+        this.id=id;  
+        this.name=name;  
+      }   
+    }     
+    var emp = new Employee(1,"John");  
+    document.writeln(emp.id+" "+emp.name+" "+emp.company);  
+    </script>  
+
+Test it Now
+
+Output:
+
+1 John Javatpoint
+
+Note - If we didn't specify any constructor method, JavaScript use default constructor method.
+
+
+JavaScript static Method
+
+The JavaScript provides static methods that belong to the class instead of an instance of that class. So, an instance is not required to call the static method. These methods are called directly on the class itself.
+Points to remember
+
+    The static keyword is used to declare a static method.
+    The static method can be of any name.
+    A class can contain more than one static method.
+    If we declare more than one static method with a similar name, the JavaScript always invokes the last one.
+    The static method can be used to create utility functions.
+    We can use this keyword to call a static method within another static method.
+    We cannot use this keyword directly to call a static method within the non-static method. In such case, we can call the static method either using the class name or as the property of the constructor.
+
+JavaScript static Method Example 1
+
+Let's see a simple example of a static method.
+
+    <script>  
+    class Test  
+    {  
+      static display()  
+      {  
+        return "static method is invoked"  
+      }  
+    }  
+    document.writeln(Test.display());  
+    </script>  
+
+Test it Now
+
+Output:
+
+static method is invoked
+
+Example 2
+
+Le's see an example to invoke more than one static method.
+
+    <script>  
+    class Test  
+    {  
+      static display1()  
+      {  
+        return "static method is invoked"  
+      }  
+      static display2()  
+      {  
+        return "static method is invoked again"  
+      }  
+    }  
+    document.writeln(Test.display1()+"<br>");  
+    document.writeln(Test.display2());  
+    </script>  
+
+Test it Now
+
+Output:
+
+static method is invoked
+static method is invoked again
+
+Example 3
+
+Let's see an example to invoke more than one static method with similar names.
+
+    <script>  
+    class Test  
+    {  
+      static display()  
+      {  
+        return "static method is invoked"  
+      }  
+      static display()  
+      {  
+        return "static method is invoked again"  
+      }  
+    }  
+    document.writeln(Test.display());  
+    </script>  
+
+Test it Now
+
+Output:
+
+static method is invoked again
+
+Example 4
+
+Let's see an example to invoke a static method within the constructor.
+
+    <script>  
+    class Test {  
+      constructor() {  
+      document.writeln(Test.display()+"<br>");   
+      document.writeln(this.constructor.display());   
+      }  
+      
+      static display() {  
+          return "static method is invoked"  
+      }  
+    }  
+    var t=new Test();  
+    </script>  
+
+Test it Now
+
+Output:
+
+static method is invoked
+static method is invoked 
+
+Example 5
+
+Let's see an example to invoke a static method within the non-static method.
+
+    <script>  
+    class Test {  
+      static display() {  
+          return "static method is invoked"  
+      }  
+        
+     show() {  
+      document.writeln(Test.display()+"<br>");   
+      }    
+    }  
+    var t=new Test();  
+    t.show();  
+    </script>  
+
+Test it Now
+
+Output:
+
+static method is invoked
+
+
+
+JavaScript Encapsulation
+
+The JavaScript Encapsulation is a process of binding the data (i.e. variables) with the functions acting on that data. It allows us to control the data and validate it. To achieve an encapsulation in JavaScript: -
+
+    Use var keyword to make data members private.
+    Use setter methods to set the data and getter methods to get that data.
+
+The encapsulation allows us to handle an object using the following properties:
+
+Read/Write - Here, we use setter methods to write the data and getter methods read that data.
+
+Read Only - In this case, we use getter methods only.
+
+Write Only - In this case, we use setter methods only.
+JavaScript Encapsulation Example
+
+Let's see a simple example of encapsulation that contains two data members with its setter and getter methods.
+
+    <script>  
+    class Student  
+      {  
+        constructor()  
+        {  
+           var name;  
+           var marks;  
+        }  
+            getName()  
+            {  
+              return this.name;  
+            }  
+          setName(name)  
+          {  
+            this.name=name;  
+          }  
+            
+          getMarks()  
+          {  
+            return this.marks;  
+          }  
+        setMarks(marks)  
+        {  
+          this.marks=marks;  
+        }  
+      
+        }  
+        var stud=new Student();  
+         stud.setName("John");  
+         stud.setMarks(80);  
+         document.writeln(stud.getName()+" "+stud.getMarks());  
+    </script>  
+
+Test it Now
+
+Output:
+
+John 80
+
+JavaScript Encapsulation Example: Validate
+
+In this example, we validate the marks of the student.
+
+    <script>  
+    class Student  
+      {  
+        constructor()  
+        {  
+           var name;  
+           var marks;  
+        }  
+            getName()  
+            {  
+              return this.name;  
+            }  
+          setName(name)  
+          {  
+            this.name=name;  
+          }  
+            
+          getMarks()  
+          {  
+            return this.marks;  
+          }  
+        setMarks(marks)  
+        {  
+            if(marks<0||marks>100)  
+            {  
+              alert("Invalid Marks");  
+            }  
+          else  
+            {  
+              this.marks=marks;  
+            }  
+        }  
+        }  
+        var stud=new Student();  
+         stud.setName("John");  
+         stud.setMarks(110);//alert() invokes  
+         document.writeln(stud.getName()+" "+stud.getMarks());  
+    </script>  
+
+Test it Now
+
+Output:
+
+John undefined
+
+JavaScript Encapsulation Example: Prototype-based approach
+
+Here, we perform prototype-based encapsulation.
+
+    <script>  
+    function Student(name,marks)  
+    {  
+      var s_name=name;  
+      var s_marks=marks;  
+      Object.defineProperty(this,"name",{  
+        get:function()  
+        {  
+          return s_name;  
+        },  
+      set:function(s_name)  
+      {  
+        this.s_name=s_name;  
+      }  
+        
+    });  
+       
+        Object.defineProperty(this,"marks",{  
+        get:function()  
+        {  
+          return s_marks;  
+        },  
+      set:function(s_marks)  
+      {  
+        this.s_marks=s_marks;  
+      }  
+        
+    });  
+        
+    }  
+      var stud=new Student("John",80);  
+      document.writeln(stud.name+" "+stud.marks);  
+    </script>  
+
+Test it Now
+
+Output:
+
+John 80
+
+
+
+JavaScript Inheritance
+
+The JavaScript inheritance is a mechanism that allows us to create new classes on the basis of already existing classes. It provides flexibility to the child class to reuse the methods and variables of a parent class.
+
+The JavaScript extends keyword is used to create a child class on the basis of a parent class. It facilitates child class to acquire all the properties and behavior of its parent class.
+Points to remember
+
+    It maintains an IS-A relationship.
+    The extends keyword is used in class expressions or class declarations.
+    Using extends keyword, we can acquire all the properties and behavior of the inbuilt object as well as custom classes.
+    We can also use a prototype-based approach to achieve inheritance.
+
+JavaScript extends Example: inbuilt object
+
+In this example, we extends Date object to display today's date.
+
+    <script>  
+    class Moment extends Date {  
+      constructor() {  
+        super();  
+      }}  
+    var m=new Moment();  
+    document.writeln("Current date:")  
+    document.writeln(m.getDate()+"-"+(m.getMonth()+1)+"-"+m.getFullYear());  
+    </script>  
+
+Test it Now
+
+Output:
+
+Current date: 31-8-2018
+
+Let's see one more example to display the year value from the given date.
+
+    <script>  
+    class Moment extends Date {  
+      constructor(year) {  
+        super(year);  
+      }}  
+    var m=new Moment("August 15, 1947 20:22:10");  
+    document.writeln("Year value:")  
+    document.writeln(m.getFullYear());  
+    </script>  
+
+Test it Now
+
+Output:
+
+Year value: 1947
+
+JavaScript extends Example: Custom class
+
+In this example, we declare sub-class that extends the properties of its parent class.
+
+    <script>  
+    class Bike  
+    {  
+      constructor()  
+      {  
+        this.company="Honda";  
+      }  
+    }  
+    class Vehicle extends Bike {  
+      constructor(name,price) {  
+       super();  
+        this.name=name;  
+        this.price=price;  
+      }   
+    }  
+    var v = new Vehicle("Shine","70000");  
+    document.writeln(v.company+" "+v.name+" "+v.price);  
+    </script>  
+
+Test it Now
+
+Output:
+
+Honda Shine 70000
+
+JavaScript extends Example: a Prototype-based approach
+
+Here, we perform prototype-based inheritance. In this approach, there is no need to use class and extends keywords.
+
+    <script>  
+    //Constructor function  
+    function Bike(company)  
+    {  
+        this.company=company;   
+    }  
+      
+    Bike.prototype.getCompany=function()  
+    {  
+      return this.company;  
+    }  
+    //Another constructor function  
+    function Vehicle(name,price) {  
+     this.name=name;  
+      this.price=price;  
+      }   
+    var bike = new Bike("Honda");  
+    Vehicle.prototype=bike; //Now Bike treats as a parent of Vehicle.  
+    var vehicle=new Vehicle("Shine",70000);  
+    document.writeln(vehicle.getCompany()+" "+vehicle.name+" "+vehicle.price);  
+    </script>  
+
+Test it Now
+
+Output:
+
+Honda Shine 70000
+
+
+
+
+JavaScript Polymorphism
+
+The polymorphism is a core concept of an object-oriented paradigm that provides a way to perform a single action in different forms. It provides an ability to call the same method on different JavaScript objects. As JavaScript is not a type-safe language, we can pass any type of data members with the methods.
+JavaScript Polymorphism Example 1
+
+Let's see an example where a child class object invokes the parent class method.
+
+    <script>  
+    class A  
+      {  
+         display()  
+        {  
+          document.writeln("A is invoked");  
+        }  
+      }  
+    class B extends A  
+      {  
+      }  
+    var b=new B();  
+    b.display();  
+    </script>  
+
+Test it Now
+
+Output:
+
+A is invoked
+
+Example 2
+
+Let's see an example where a child and parent class contains the same method. Here, the object of child class invokes both classes method.
+
+    <script>  
+    class A  
+      {  
+         display()  
+        {  
+          document.writeln("A is invoked<br>");  
+        }  
+      }  
+    class B extends A  
+      {  
+        display()  
+        {  
+          document.writeln("B is invoked");  
+        }  
+      }  
+      
+    var a=[new A(), new B()]  
+    a.forEach(function(msg)  
+    {  
+    msg.display();  
+    });  
+    </script>  
+
+Test it Now
+
+Output:
+
+A is invoked
+B is invoked
+
+Example 3
+
+Let's see the same example with prototype-based approach.
+
+    <script>  
+    function A()  
+    {  
+    }  
+    A.prototype.display=function()  
+    {  
+      return "A is invoked";  
+    }  
+    function B()  
+    {  
+        
+    }  
+      
+    B.prototype=Object.create(A.prototype);  
+      
+    var a=[new A(), new B()]  
+      
+    a.forEach(function(msg)  
+    {  
+      document.writeln(msg.display()+"<br>");  
+    });  
+    <script>  
+
+Test it Now
+
+Output:
+
+A is invoked
+B is invoked
+
+
+
+
+JavaScript Abstraction
+
+An abstraction is a way of hiding the implementation details and showing only the functionality to the users. In other words, it ignores the irrelevant details and shows only the required one.
+Points to remember
+
+    We cannot create an instance of Abstract Class.
+    It reduces the duplication of code.
+
+JavaScript Abstraction Example
+Example 1
+
+Let's check whether we can create an instance of Abstract class or not.
+
+    <script>  
+    //Creating a constructor function  
+    function Vehicle()  
+    {  
+        this.vehicleName= vehicleName;  
+        throw new Error("You cannot create an instance of Abstract class");  
+      
+    }  
+    Vehicle.prototype.display=function()  
+    {  
+        return this.vehicleName;  
+    }  
+    var vehicle=new Vehicle();  
+     </script>  
+
+JavaScript OOPs Abstraction
+Example 2
+
+Let's see an example to achieve abstraction.
+
+    <script>  
+    //Creating a constructor function  
+     function Vehicle()  
+    {  
+        this.vehicleName="vehicleName";  
+        throw new Error("You cannot create an instance of Abstract Class");  
+    }  
+    Vehicle.prototype.display=function()  
+    {  
+        return "Vehicle is: "+this.vehicleName;  
+    }  
+    //Creating a constructor function  
+    function Bike(vehicleName)  
+    {  
+        this.vehicleName=vehicleName;  
+    }  
+    //Creating object without using the function constructor  
+    Bike.prototype=Object.create(Vehicle.prototype);  
+    var bike=new Bike("Honda");  
+    document.writeln(bike.display());  
+      
+      
+     </script>  
+
+Test it Now
+
+Output:
+
+Vehicle is: Honda
+
+Example 3
+
+In this example, we use instanceof operator to test whether the object refers to the corresponding class.
+
+    <script>  
+    //Creating a constructor function  
+     function Vehicle()  
+    {  
+        this.vehicleName=vehicleName;  
+        throw new Error("You cannot create an instance of Abstract class");  
+    }  
+    //Creating a constructor function  
+    function Bike(vehicleName)  
+    {  
+        this.vehicleName=vehicleName;  
+    }  
+    Bike.prototype=Object.create(Vehicle.prototype);  
+    var bike=new Bike("Honda");  
+    document.writeln(bike instanceof Vehicle);  
+    document.writeln(bike instanceof Bike);  
+      
+     </script>  
+
+Test it Now
+
+Output:
+
+true true
+
+
+
+
+Browser Object Model
+
+    Browser Object Model (BOM)
+
+The Browser Object Model (BOM) is used to interact with the browser.
+
+The default object of browser is window means you can call all the functions of window by specifying window or directly. For example:
+
+    window.alert("hello javatpoint");  
+
+is same as:
+
+    alert("hello javatpoint");  
+
+You can use a lot of properties (other objects) defined underneath the window object like document, history, screen, navigator, location, innerHeight, innerWidth,
+Note: The document object represents an html document. It forms DOM (Document Object Model).
+
+
+Window Object
+
+    Window Object
+    Properties of Window Object
+    Methods of Window Object
+    Example of Window Object
+
+The window object represents a window in browser. An object of window is created automatically by the browser.
+
+Window is the object of browser, it is not the object of javascript. The javascript objects are string, array, date etc.
+Note: if html document contains frame or iframe, browser creates additional window objects for each frame.
+Methods of window object
+
+The important methods of window object are as follows:
+Method	Description
+alert()	displays the alert box containing message with ok button.
+confirm()	displays the confirm dialog box containing message with ok and cancel button.
+prompt()	displays a dialog box to get input from the user.
+open()	opens the new window.
+close()	closes the current window.
+setTimeout()	performs action after specified time like calling function, evaluating expressions etc.
+Example of alert() in javascript
+
+It displays alert dialog box. It has message and ok button.
+
+    <script type="text/javascript">  
+    function msg(){  
+     alert("Hello Alert Box");  
+    }  
+    </script>  
+    <input type="button" value="click" onclick="msg()"/>  
+
+Output of the above example
+Example of confirm() in javascript
+
+It displays the confirm dialog box. It has message with ok and cancel buttons.
+
+    <script type="text/javascript">  
+    function msg(){  
+    var v= confirm("Are u sure?");  
+    if(v==true){  
+    alert("ok");  
+    }  
+    else{  
+    alert("cancel");  
+    }  
+      
+    }  
+    </script>  
+      
+    <input type="button" value="delete record" onclick="msg()"/>  
+
+Output of the above example
+Example of prompt() in javascript
+
+It displays prompt dialog box for input. It has message and textfield.
+
+    <script type="text/javascript">  
+    function msg(){  
+    var v= prompt("Who are you?");  
+    alert("I am "+v);  
+      
+    }  
+    </script>  
+      
+    <input type="button" value="click" onclick="msg()"/>  
+
+Output of the above example
+Example of open() in javascript
+
+It displays the content in a new window.
+
+    <script type="text/javascript">  
+    function msg(){  
+    open("http://www.javatpoint.com");  
+    }  
+    </script>  
+    <input type="button" value="javatpoint" onclick="msg()"/>  
+
+Output of the above example
+Example of setTimeout() in javascript
+
+It performs its task after the given milliseconds.
+
+    <script type="text/javascript">  
+    function msg(){  
+    setTimeout(  
+    function(){  
+    alert("Welcome to Javatpoint after 2 seconds")  
+    },2000);  
+      
+    }  
+    </script>  
+      
+    <input type="button" value="click" onclick="msg()"/>  
+
+
+JavaScript History Object
+
+    History Object
+    Properties of History Object
+    Methods of History Object
+    Example of History Object
+
+The JavaScript history object represents an array of URLs visited by the user. By using this object, you can load previous, forward or any particular page.
+
+The history object is the window property, so it can be accessed by:
+
+    window.history  
+
+Or,
+
+    history  
+
+Property of JavaScript history object
+
+There are only 1 property of history object.
+No.	Property	Description
+1	length	returns the length of the history URLs.
+Methods of JavaScript history object
+
+There are only 3 methods of history object.
+No.	Method	Description
+1	forward()	loads the next page.
+2	back()	loads the previous page.
+3	go()	loads the given page number.
+Example of history object
+
+Let’s see the different usage of history object.
+
+    history.back();//for previous page  
+    history.forward();//for next page  
+    history.go(2);//for next 2nd page  
+    history.go(-2);//for previous 2nd page  
+
+
+JavaScript Navigator Object
+
+    Navigator Object
+    Properties of Navigator Object
+    Methods of Navigator Object
+    Example of Navigator Object
+
+The JavaScript navigator object is used for browser detection. It can be used to get browser information such as appName, appCodeName, userAgent etc.
+
+The navigator object is the window property, so it can be accessed by:
+
+    window.navigator  
+
+Or,
+
+    navigator  
+
+Property of JavaScript navigator object
+
+There are many properties of navigator object that returns information of the browser.
+No.	Property	Description
+1	appName	returns the name
+2	appVersion	returns the version
+3	appCodeName	returns the code name
+4	cookieEnabled	returns true if cookie is enabled otherwise false
+5	userAgent	returns the user agent
+6	language	returns the language. It is supported in Netscape and Firefox only.
+7	userLanguage	returns the user language. It is supported in IE only.
+8	plugins	returns the plugins. It is supported in Netscape and Firefox only.
+9	systemLanguage	returns the system language. It is supported in IE only.
+10	mimeTypes[]	returns the array of mime type. It is supported in Netscape and Firefox only.
+11	platform	returns the platform e.g. Win32.
+12	online	returns true if browser is online otherwise false.
+Methods of JavaScript navigator object
+
+The methods of navigator object are given below.
+No.	Method	Description
+1	javaEnabled()	checks if java is enabled.
+2	taintEnabled()	checks if taint is enabled. It is deprecated since JavaScript 1.2.
+Example of navigator object
+
+Let’s see the different usage of history object.
+
+    <script>  
+    document.writeln("<br/>navigator.appCodeName: "+navigator.appCodeName);  
+    document.writeln("<br/>navigator.appName: "+navigator.appName);  
+    document.writeln("<br/>navigator.appVersion: "+navigator.appVersion);  
+    document.writeln("<br/>navigator.cookieEnabled: "+navigator.cookieEnabled);  
+    document.writeln("<br/>navigator.language: "+navigator.language);  
+    document.writeln("<br/>navigator.userAgent: "+navigator.userAgent);  
+    document.writeln("<br/>navigator.platform: "+navigator.platform);  
+    document.writeln("<br/>navigator.onLine: "+navigator.onLine);  
+    </script>  
+
+Test it Now
+
+navigator.appCodeName: Mozilla 
+navigator.appName: Netscape 
+navigator.appVersion: 5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 
+(KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36 
+navigator.cookieEnabled: true 
+navigator.language: en-US 
+navigator.userAgent: Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 
+(KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36 
+navigator.platform: Win32 
+navigator.onLine: true
+
+
+JavaScript Screen Object
+
+    Screen Object
+    Properties of Screen Object
+    Methods of Screen Object
+    Example of Screen Object
+
+The JavaScript screen object holds information of browser screen. It can be used to display screen width, height, colorDepth, pixelDepth etc.
+
+The navigator object is the window property, so it can be accessed by:
+
+    window.screen  
+
+Or,
+
+    screen  
+
+Property of JavaScript Screen Object
+
+There are many properties of screen object that returns information of the browser.
+No.	Property	Description
+1	width	returns the width of the screen
+2	height	returns the height of the screen
+3	availWidth	returns the available width
+4	availHeight	returns the available height
+5	colorDepth	returns the color depth
+6	pixelDepth	returns the pixel depth.
+Example of JavaScript Screen Object
+
+Let’s see the different usage of screen object.
+
+    <script>  
+    document.writeln("<br/>screen.width: "+screen.width);  
+    document.writeln("<br/>screen.height: "+screen.height);  
+    document.writeln("<br/>screen.availWidth: "+screen.availWidth);  
+    document.writeln("<br/>screen.availHeight: "+screen.availHeight);  
+    document.writeln("<br/>screen.colorDepth: "+screen.colorDepth);  
+    document.writeln("<br/>screen.pixelDepth: "+screen.pixelDepth);  
+    </script>  
+
+Test it Now
+
+screen.width: 1366 
+screen.height: 768 
+screen.availWidth: 1366 
+screen.availHeight: 728 
+screen.colorDepth: 24 
+screen.pixelDepth: 24
+
+
+
+DOM
+
+
+Document Object Model
+
+    Document Object
+    Properties of document object
+    Methods of document object
+    Example of document object
+
+The document object represents the whole html document.
+
+When html document is loaded in the browser, it becomes a document object. It is the root element that represents the html document. It has properties and methods. By the help of document object, we can add dynamic content to our web page.
+
+As mentioned earlier, it is the object of window. So
+
+    window.document  
+
+Is same as
+
+    document  
+
+According to W3C - "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+
+
+Javascript - document.getElementById() method
+
+    getElementById() method
+    Example of getElementById()
+
+The document.getElementById() method returns the element of specified id.
+
+In the previous page, we have used document.form1.name.value to get the value of the input value. Instead of this, we can use document.getElementById() method to get value of the input text. But we need to define id for the input field.
+
+Let's see the simple example of document.getElementById() method that prints cube of the given number.
+
+    <script type="text/javascript">  
+    function getcube(){  
+    var number=document.getElementById("number").value;  
+    alert(number*number*number);  
+    }  
+    </script>  
+    <form>  
+    Enter No:<input type="text" id="number" name="number"/><br/>  
+    <input type="button" value="cube" onclick="getcube()"/>  
+    </form>
+
+
+GetElementsByClassName()
+
+The getElementsByClassName() method is used for selecting or getting the elements through their class name value. This DOM method returns an array-like object that consists of all the elements having the specified classname. On calling the getElementsByClassName() method on any particular element, it will search the whole document and will return only those elements which match the specified or given class name.
+Syntax
+
+    var ele=document.getELementsByClassName('name');  
+
+Here, name is the mandatory argument to be passed. It is the string that specifies either a single classname or multiple class names to match.
+Example of getElementsByClassName() Method
+
+Let's look at some examples to know and understand the practical implementation of the method.
+
+Example
+
+It is a simple class implementation that returns an array-like object on invoking the variable x.
+
+    <html>  
+    <head> <h5>DOM Methods </h5> </head>  
+    <body>  
+    <div class="Class">  
+    This is a simple class implementation  
+    </div>  
+    <script type="text/javascript">  
+    var x=document.getElementsByClassName('Class');  
+    document.write("On calling x, it will return an arrsy-like object: <br>"+x);  
+    </script>  
+    </body>  
+    </html>  
+
+Output:
+GetElementsByClassName()
+
+Similarly, we can implement the getElementsByClassName() method for returning collections of elements for multiple classes.
+Difference between getElementsByClassName(), querySelector() and querySelectorAll() Methods
+
+getElementsByClassName(): It matches the elements with the specified class name, and returns a set of the matched elements. The returned elements are live HTML collection of elements. These live elements can be further updated if any changes are made in the Document Object Model.
+
+querySelector(): It returns only a single element that matches the specified classname. If it does not find any matching element, it returns null.
+
+The main point to understand is that all the above-described methods return either one element or a list, but the getELementsByClassName() method serves the dynamic updation, and the other two methods serve for the static.
+
+
+
+Javascript - document.getElementsByName() method
+
+    getElementsByName() method
+    Example of getElementsByName()
+
+The document.getElementsByName() method returns all the element of specified name.
+
+The syntax of the getElementsByName() method is given below:
+
+    document.getElementsByName("name")  
+
+Here, name is required.
+Example of document.getElementsByName() method
+
+In this example, we going to count total number of genders. Here, we are using getElementsByName() method to get all the genders.
+
+    <script type="text/javascript">  
+    function totalelements()  
+    {  
+    var allgenders=document.getElementsByName("gender");  
+    alert("Total Genders:"+allgenders.length);  
+    }  
+    </script>  
+    <form>  
+    Male:<input type="radio" name="gender" value="male">  
+    Female:<input type="radio" name="gender" value="female">  
+      
+    <input type="button" onclick="totalelements()" value="Total Genders">  
+    </form>  
+
+Output of the above example
+
+
+
+Javascript - document.getElementsByTagName() method
+
+    getElementsByTagName() method
+    Example of getElementsByTagName()
+
+The document.getElementsByTagName() method returns all the element of specified tag name.
+
+The syntax of the getElementsByTagName() method is given below:
+
+    document.getElementsByTagName("name")  
+
+Here, name is required.
+Example of document.getElementsByTagName() method
+
+In this example, we going to count total number of paragraphs used in the document. To do this, we have called the document.getElementsByTagName("p") method that returns the total paragraphs.
+
+    <script type="text/javascript">  
+    function countpara(){  
+    var totalpara=document.getElementsByTagName("p");  
+    alert("total p tags are: "+totalpara.length);  
+      
+    }  
+    </script>  
+    <p>This is a pragraph</p>  
+    <p>Here we are going to count total number of paragraphs by getElementByTagName() method.</p>  
+    <p>Let's see the simple example</p>  
+    <button onclick="countpara()">count paragraph</button>  
+
+Output of the above example
+
+
+
+Javascript - innerHTML
+
+    javascript innerHTML
+    Example of innerHTML property
+
+The innerHTML property can be used to write the dynamic html on the html document.
+
+It is used mostly in the web pages to generate the dynamic html such as registration form, comment form, links etc.
+Example of innerHTML property
+
+In this example, we are going to create the html form when user clicks on the button.
+
+In this example, we are dynamically writing the html form inside the div name having the id mylocation. We are identifing this position by calling the document.getElementById() method.
+
+    <script type="text/javascript" >  
+    function showcommentform() {  
+    var data="Name:<input type='text' name='name'><br>Comment:<br><textarea rows='5' cols='80'></textarea>  
+    <br><input type='submit' value='Post Comment'>";  
+    document.getElementById('mylocation').innerHTML=data;  
+    }  
+    </script>  
+    <form name="myForm">  
+    <input type="button" value="comment" onclick="showcommentform()">  
+    <div id="mylocation"></div>  
+    </form>  
+
+
+
+Javascript - innerText
+
+    javascript innerText
+    Example of innerText property
+
+The innerText property can be used to write the dynamic text on the html document. Here, text will not be interpreted as html text but a normal text.
+
+It is used mostly in the web pages to generate the dynamic content such as writing the validation message, password strength etc.
+Javascript innerText Example
+
+In this example, we are going to display the password strength when releases the key after press.
+
+    <script type="text/javascript" >  
+    function validate() {  
+    var msg;  
+    if(document.myForm.userPass.value.length>5){  
+    msg="good";  
+    }  
+    else{  
+    msg="poor";  
+    }  
+    document.getElementById('mylocation').innerText=msg;  
+     }  
+      
+    </script>  
+    <form name="myForm">  
+    <input type="password" value="" name="userPass" onkeyup="validate()">  
+    Strength:<span id="mylocation">no strength</span>  
+    </form>  
+
+Test it Now
+Output of the above example
+
+
+
+
+JavaScript Cookies
+
+A cookie is an amount of information that persists between a server-side and a client-side. A web browser stores this information at the time of browsing.
+
+A cookie contains the information as a string generally in the form of a name-value pair separated by semi-colons. It maintains the state of a user and remembers the user's information among all the web pages.
+How Cookies Works?
+
+    When a user sends a request to the server, then each of that request is treated as a new request sent by the different user.
+    So, to recognize the old user, we need to add the cookie with the response from the server.
+    browser at the client-side.
+    Now, whenever a user sends a request to the server, the cookie is added with that request automatically. Due to the cookie, the server recognizes the users.
+
+JavaScript Cookies
+How to create a Cookie in JavaScript?
+
+In JavaScript, we can create, read, update and delete a cookie by using document.cookie property.
+
+The following syntax is used to create a cookie:
+
+    document.cookie="name=value";  
+
+JavaScript Cookie Example
+Example 1
+
+Let's see an example to set and get a cookie.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+    <input type="button" value="setCookie" onclick="setCookie()">  
+    <input type="button" value="getCookie" onclick="getCookie()">  
+        <script>  
+        function setCookie()  
+        {  
+            document.cookie="username=Duke Martin";  
+        }  
+        function getCookie()  
+        {  
+            if(document.cookie.length!=0)  
+            {  
+            alert(document.cookie);  
+            }  
+            else  
+            {  
+            alert("Cookie not available");  
+            }  
+        }  
+        </script>  
+      
+    </body>  
+    </html>  
+
+Example 2
+
+Here, we display the cookie's name-value pair separately.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+    <input type="button" value="setCookie" onclick="setCookie()">  
+    <input type="button" value="getCookie" onclick="getCookie()">  
+        <script>  
+        function setCookie()  
+        {  
+            document.cookie="username=Duke Martin";  
+        }  
+        function getCookie()  
+        {  
+            if(document.cookie.length!=0)  
+            {  
+                var array=document.cookie.split("=");  
+            alert("Name="+array[0]+" "+"Value="+array[1]);  
+            }  
+            else  
+            {  
+            alert("Cookie not available");  
+            }  
+        }  
+        </script>  
+      
+    </body>  
+    </html>  
+
+Example 3
+
+In this example, we provide choices of color and pass the selected color value to the cookie. Now, cookie stores the last choice of a user in a browser. So, on reloading the web page, the user's last choice will be shown on the screen.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+            <select id="color" onchange="display()">  
+                    <option value="Select Color">Select Color</option>  
+                    <option value="yellow">Yellow</option>  
+                    <option value="green">Green</option>  
+                    <option value="red">Red</option>  
+                </select>  
+                <script type="text/javascript">  
+                    function display()  
+                    {  
+                        var value = document.getElementById("color").value;  
+                        if (value != "Select Color")  
+                        {  
+                            document.bgColor = value;  
+                            document.cookie = "color=" + value;  
+                        }  
+                    }  
+                    window.onload = function ()  
+                    {  
+                        if (document.cookie.length != 0)  
+                        {  
+                            var array = document.cookie.split("=");  
+                            document.getElementById("color").value = array[1];  
+                            document.bgColor = array[1];  
+                        }  
+                    }  
+                  
+                      
+                </script>  
+    </body>  
+    </html>  
+
+
+
+Cookie Attributes
+
+JavaScript provides some optional attributes that enhance the functionality of cookies. Here, is the list of some attributes with their description.
+Attributes 	Description
+expires 	It maintains the state of a cookie up to the specified date and time.
+max-age 	It maintains the state of a cookie up to the specified time. Here, time is given in seconds.
+path 	It expands the scope of the cookie to all the pages of a website.
+domain 	It is used to specify the domain for which the cookie is valid.
+Cookie expires attribute
+
+The cookie expires attribute provides one of the ways to create a persistent cookie. Here, a date and time are declared that represents the active period of a cookie. Once the declared time is passed, a cookie is deleted automatically.
+
+Let's see an example of cookie expires attribute.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+    <input type="button" value="setCookie" onclick="setCookie()">  
+    <input type="button" value="getCookie" onclick="getCookie()">  
+        <script>  
+        function setCookie()  
+        {  
+            document.cookie="username=Duke Martin;expires=Sun, 20 Aug 2030 12:00:00 UTC";  
+        }  
+        function getCookie()  
+        {  
+            if(document.cookie.length!=0)  
+            {  
+                var array=document.cookie.split("=");  
+            alert("Name="+array[0]+" "+"Value="+array[1]);  
+            }  
+            else  
+            {  
+            alert("Cookie not available");  
+            }  
+        }  
+        </script>  
+    </body>  
+    </html>  
+
+Cookie max-age attribute
+
+The cookie max-age attribute provides another way to create a persistent cookie. Here, time is declared in seconds. A cookie is valid up to the declared time only.
+
+Let's see an example of cookie max-age attribute.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+    <input type="button" value="setCookie" onclick="setCookie()">  
+    <input type="button" value="getCookie" onclick="getCookie()">  
+        <script>  
+        function setCookie()  
+        {  
+            document.cookie="username=Duke Martin;max-age=" + (60 * 60 * 24 * 365) + ";"  
+        }  
+        function getCookie()  
+        {  
+            if(document.cookie.length!=0)  
+            {  
+                var array=document.cookie.split("=");  
+            alert("Name="+array[0]+" "+"Value="+array[1]);  
+            }  
+            else  
+            {  
+            alert("Cookie not available");  
+            }  
+        }  
+        </script>  
+    </body>  
+    </html>  
+
+Cookie path attribute
+
+If a cookie is created for a webpage, by default, it is valid only for the current directory and sub-directory. JavaScript provides a path attribute to expand the scope of cookie up to all the pages of a website.
+Cookie path attribute Example
+
+Let's understand the path attribute with the help of an example.
+JavaScript Cookie Attributes
+
+Here, if we create a cookie for webpage2.html, it is valid only for itself and its sub-directory (i.e., webpage3.html). It is not valid for webpage1.html file.
+
+In this example, we use path attribute to enhance the visibility of cookies up to all the pages. Here, you all just need to do is to maintain the above directory structure and put the below program in all three web pages. Now, the cookie is valid for each web page.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+    <input type="button" value="setCookie" onclick="setCookie()">  
+    <input type="button" value="getCookie" onclick="getCookie()">  
+        <script>  
+        function setCookie()  
+        {  
+            document.cookie="username=Duke Martin;max-age=" + (60 * 60 * 24 * 365) + ";path=/;"  
+        }  
+        function getCookie()  
+        {  
+            if(document.cookie.length!=0)  
+            {  
+                var array=document.cookie.split("=");  
+            alert("Name="+array[0]+" "+"Value="+array[1]);  
+            }  
+            else  
+            {  
+            alert("Cookie not available");  
+            }  
+        }  
+        </script>  
+    </body>  
+    </html>  
+
+Cookie domain attribute
+
+A JavaScript domain attribute specifies the domain for which the cookie is valid. Let's suppose if we provide any domain name to the attribute such like:
+
+    domain=javatpoint.com  
+
+Here, the cookie is valid for the given domain and all its sub-domains.
+
+However, if we provide any sub-domain to the attribute such like:
+
+    omain=training.javatpoint.com  
+
+Here, the cookie is valid only for the given sub-domain. So, it's a better approach to provide domain name instead of sub-domain.
+
+
+Cookie with multiple Name-Value pairs
+
+In JavaScript, a cookie can contain only a single name-value pair. However, to store more than one name-value pair, we can use the following approach: -
+
+    Serialize the custom object in a JSON string, parse it and then store in a cookie.
+    For each name-value pair, use a separate cookie.
+
+Examples to Store Name-Value pair in a Cookie
+Example 1
+
+Let's see an example to check whether a cookie contains more than one name-value pair.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+        Name: <input type="text" id="name"><br>  
+        Email: <input type="email" id="email"><br>  
+        Course: <input type="text" id="course"><br>  
+    <input type="button" value="Set Cookie" onclick="setCookie()">  
+    <input type="button" value="Get Cookie" onclick="getCookie()">  
+    <script>  
+        function setCookie()  
+        {  
+    //Declaring 3 key-value pairs  
+            var info="Name="+ document.getElementById("name").value+";Email="+document.getElementById("email").value+";Course="+document.getElementById("course").value;  
+    //Providing all 3 key-value pairs to a single cookie  
+            document.cookie=info;  
+        }  
+      
+        function getCookie()  
+        {  
+            if(document.cookie.length!=0)  
+            {  
+           //Invoking key-value pair stored in a cookie  
+            alert(document.cookie);  
+            }  
+            else  
+            {  
+            alert("Cookie not available")  
+            }  
+        }  
+    </script>  
+    </body>  
+    </html>  
+
+Output:
+Test it Now JavaScript Cookie with multiple Name
+
+On clicking Get Cookie button, the below dialog box appears.
+JavaScript Cookie with multiple Name
+
+Here, we can see that only a single name-value is displayed.
+
+However, if you click, Get Cookie without filling the form, the below dialog box appears.
+JavaScript Cookie with multiple Name
+Example 2
+
+Let's see an example to store different name-value pairs in a cookie using JSON.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+        Name: <input type="text" id="name"><br>  
+        Email: <input type="email" id="email"><br>  
+        Course: <input type="text" id="course"><br>  
+    <input type="button" value="Set Cookie" onclick="setCookie()">  
+    <input type="button" value="Get Cookie" onclick="getCookie()">  
+      
+    <script>  
+        function setCookie()  
+    {  
+        var obj = {};//Creating custom object  
+        obj.name = document.getElementById("name").value;  
+        obj.email = document.getElementById("email").value;  
+        obj.course = document.getElementById("course").value;  
+      
+    //Converting JavaScript object to JSON string      
+    var jsonString = JSON.stringify(obj);  
+      
+        document.cookie = jsonString;  
+    }  
+             function getCookie()  
+    {  
+        if( document.cookie.length!=0)  
+        {  
+    //Parsing JSON string to JSON object  
+        var obj = JSON.parse(document.cookie);  
+          
+            alert("Name="+obj.name+" "+"Email="+obj.email+" "+"Course="+obj.course);  
+        }  
+        else  
+        {  
+            alert("Cookie not available");  
+        }  
+    }  
+        </script>  
+    </body>  
+    </html>  
+
+Test it Now
+
+Output:
+JavaScript Cookie with multiple Name
+
+On clicking Get Cookie button, the below dialog box appears.
+JavaScript Cookie with multiple Name
+
+Here, we can see that all the stored name-value pairs are displayed.
+Example 3
+
+Let's see an example to store each name-value pair in a different cookie.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+        Name: <input type="text" id="name"><br>  
+        Email: <input type="email" id="email"><br>  
+        Course: <input type="text" id="course"><br>  
+    <input type="button" value="Set Cookie" onclick="setCookie()">  
+    <input type="button" value="Get Cookie" onclick="getCookie()">  
+      
+    <script>  
+     function setCookie()  
+    {  
+        document.cookie = "name=" + document.getElementById("name").value;  
+        document.cookie = "email=" + document.getElementById("email").value;  
+        document.cookie = "course=" + document.getElementById("course").value;  
+    }  
+    function getCookie()  
+    {  
+        if (document.cookie.length != 0)  
+        {  
+            alert("Name="+document.getElementById("name").value+" Email="+document.getElementById("email").value+" Course="+document.getElementById("course").value);  
+        }      
+        else  
+        {  
+            alert("Cookie not available");  
+        }  
+    }     
+     </script>  
+    </body>  
+    </html>  
+
+Output:
+Test it Now JavaScript Cookie with multiple Name
+
+On clicking Get Cookie button, the below dialog box appears.
+JavaScript Cookie with multiple Name
+
+Here, also we can see that all the stored name-value pairs are displayed.
+
+
+Deleting a Cookie in JavaScript
+
+In the previous section, we learned the different ways to set and update a cookie in JavaScript. Apart from that, JavaScript also allows us to delete a cookie. Here, we see all the possible ways to delete a cookie.
+Different ways to delete a Cookie
+
+These are the following ways to delete a cookie:
+
+    A cookie can be deleted by using expire attribute.
+    A cookie can also be deleted by using max-age attribute.
+    We can delete a cookie explicitly, by using a web browser.
+
+Examples to delete a Cookie
+Example 1
+
+In this example, we use expire attribute to delete a cookie by providing expiry date (i.e. any past date) to it.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+         
+    <input type="button" value="Set Cookie" onclick="setCookie()">  
+    <input type="button" value="Get Cookie" onclick="getCookie()">  
+    <script>  
+    function setCookie()   
+    {  
+        document.cookie="name=Martin Roy; expires=Sun, 20 Aug 2000 12:00:00 UTC";  
+        
+    }   
+    function getCookie()  
+    {  
+        if(document.cookie.length!=0)  
+        {  
+        alert(document.cookie);  
+        }  
+        else  
+        {  
+            alert("Cookie not avaliable");  
+        }  
+    }  
+    </script>  
+    </body>  
+    </html>  
+
+Example 2
+
+In this example, we use max-age attribute to delete a cookie by providing zero or negative number (that represents seconds) to it.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+         
+    <input type="button" value="Set Cookie" onclick="setCookie()">  
+    <input type="button" value="Get Cookie" onclick="getCookie()">  
+    <script>  
+    function setCookie()   
+    {  
+        document.cookie="name=Martin Roy;max-age=0";  
+    }   
+    function getCookie()  
+    {  
+        if(document.cookie.length!=0)  
+        {  
+        alert(document.cookie);  
+        }  
+        else  
+        {  
+            alert("Cookie not avaliable");  
+        }  
+    }  
+      
+    </script>  
+    </body>  
+    </html>  
+
+Example 3
+
+Let's see an example to set, get and delete multiple cookies.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+         
+    <input type="button" value="Set Cookie1" onclick="setCookie1()">  
+    <input type="button" value="Get Cookie1" onclick="getCookie1()">  
+    <input type="button" value="Delete Cookie1" onclick="deleteCookie1()">  
+    <br>  
+    <input type="button" value="Set Cookie2" onclick="setCookie2()">  
+    <input type="button" value="Get Cookie2" onclick="getCookie2()">  
+    <input type="button" value="Delete Cookie2" onclick="deleteCookie2()">  
+    <br>  
+    <input type="button" value="Display all cookies" onclick="displayCookie()">  
+      
+    <script>  
+    function setCookie1()   
+    {  
+        document.cookie="name=Martin Roy";  
+         cookie1=  document.cookie;  
+    }   
+    function setCookie2()   
+    {  
+        document.cookie="name=Duke William";  
+         cookie2=  document.cookie;  
+    }   
+      
+    function getCookie1()  
+    {  
+        if(cookie1.length!=0)  
+        {  
+        alert(cookie1);  
+        }  
+        else  
+        {  
+            alert("Cookie not available");  
+        }  
+    }  
+      
+    function getCookie2()  
+    {  
+        if(cookie2.length!=0)  
+        {  
+        alert(cookie2);  
+        }  
+        else  
+        {  
+            alert("Cookie not available");  
+        }  
+    }  
+      
+    function deleteCookie1()  
+    {  
+        document.cookie=cookie1+";max-age=0";  
+        cookie1=document.cookie;  
+        alert("Cookie1 is deleted");  
+    }  
+      
+    function deleteCookie2()  
+    {  
+        document.cookie=cookie2+";max-age=0";  
+        cookie2=document.cookie;  
+       alert("Cookie2 is deleted");  
+    }  
+      
+    function displayCookie()  
+    {  
+    if(cookie1!=0&&cookie2!=0)  
+    {  
+        alert(cookie1+" "+cookie2);  
+    }  
+    else if(cookie1!=0)  
+    {  
+        alert(cookie1);  
+    }  
+    else if(cookie2!=0)  
+    {  
+        alert(cookie2);  
+    }  
+    else{  
+        alert("Cookie not available");  
+    }  
+      
+    }  
+      
+    </script>  
+    </body>  
+    </html>  
+
+Example 4
+
+Let's see an example to delete a cookie explicitly.
+
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+    </head>  
+    <body>  
+         
+    <input type="button" value="Set Cookie" onclick="setCookie()">  
+    <input type="button" value="Get Cookie" onclick="getCookie()">  
+    <script>  
+    function setCookie()   
+    {  
+        document.cookie="name=Martin Roy";  
+        
+    }   
+    function getCookie()  
+    {  
+        if(document.cookie.length!=0)  
+        {  
+        alert(document.cookie);  
+        }  
+        else  
+        {  
+            alert("Cookie not avaliable");  
+        }  
+    }  
+    </script>  
+    </body>  
+    </html>  
+
+After clicking Set Cookie once, whenever we click Get Cookie, the cookies key and value is displayed on the screen.
+JavaScript Deleting a Cookie
+
+To delete a cookie explicitly, follow the following steps:
+
+    Open Mozilla Firefox.
+    Click Open menu - Library - History - Clear Recent History - Details.
+
+JavaScript Deleting a Cookie
+
+    Here we can see a Cookies checkbox which is already marked. Now, click Clear Now to delete the cookies explicitly.
+
+Now, on clicking Get Cookie, the below dialog box appears.
+JavaScript Deleting a Cookie
+
+Here, we can see that the cookies are deleted.
+
+
+
+Exception Handling in JavaScript
+
+An exception signifies the presence of an abnormal condition which requires special operable techniques. In programming terms, an exception is the anomalous code that breaks the normal flow of the code. Such exceptions require specialized programming constructs for its execution.
+What is Exception Handling
+
+In programming, exception handling is a process or method used for handling the abnormal statements in the code and executing them. It also enables to handle the flow control of the code/program. For handling the code, various handlers are used that process the exception and execute the code. For example, the Division of a non-zero value with zero will result into infinity always, and it is an exception. Thus, with the help of exception handling, it can be executed and handled.
+
+In exception handling:
+
+A throw statement is used to raise an exception. It means when an abnormal condition occurs, an exception is thrown using throw.
+
+The thrown exception is handled by wrapping the code into the try…catch block. If an error is present, the catch block will execute, else only the try block statements will get executed.
+
+Thus, in a programming language, there can be different types of errors which may disturb the proper execution of the program.
+Types of Errors
+
+While coding, there can be three types of errors in the code:
+
+    Syntax Error: When a user makes a mistake in the pre-defined syntax of a programming language, a syntax error may appear.
+    Runtime Error: When an error occurs during the execution of the program, such an error is known as Runtime error. The codes which create runtime errors are known as Exceptions. Thus, exception handlers are used for handling runtime errors.
+    Logical Error: An error which occurs when there is any logical mistake in the program that may not produce the desired output, and may terminate abnormally. Such an error is known as Logical error.
+
+Error Object
+
+When a runtime error occurs, it creates and throws an Error object. Such an object can be used as a base for the user-defined exceptions too. An error object has two properties:
+
+    name: This is an object property that sets or returns an error name.
+    message: This property returns an error message in the string form.
+
+Although Error is a generic constructor, there are following standard built-in error types or error constructors beside it:
+
+    EvalError: It creates an instance for the error that occurred in the eval(), which is a global function used for evaluating the js string code.
+    InternalError: It creates an instance when the js engine throws an internal error.
+    RangeError: It creates an instance for the error that occurs when a numeric variable or parameter is out of its valid range.
+    ReferenceError: It creates an instance for the error that occurs when an invalid reference is de-referenced.
+    SyntaxError: An instance is created for the syntax error that may occur while parsing the eval().
+    TypeError: When a variable is not a valid type, an instance is created for such an error.
+    URIError: An instance is created for the error that occurs when invalid parameters are passed in encodeURI() or decodeURI().
+
+Exception Handling Statements
+
+There are following statements that handle if any exception occurs:
+
+    throw statements
+    try…catch statements
+    try…catch…finally statements.
+
+These exception handling statements are discussed in the next section.
+
+
+JavaScript try…catch
+
+A try…catch is a commonly used statement in various programming languages. Basically, it is used to handle the error-prone part of the code. It initially tests the code for all possible errors it may contain, then it implements actions to tackle those errors (if occur). A good programming approach is to keep the complex code within the try…catch statements.
+
+Let's discuss each block of statement individually:
+
+try{} statement: Here, the code which needs possible error testing is kept within the try block. In case any error occur, it passes to the catch{} block for taking suitable actions and handle the error. Otherwise, it executes the code written within.
+
+catch{} statement: This block handles the error of the code by executing the set of statements written within the block. This block contains either the user-defined exception handler or the built-in handler. This block executes only when any error-prone code needs to be handled in the try block. Otherwise, the catch block is skipped.
+Note: catch {} statement executes only after the execution of the try {} statement. Also, one try block can contain one or more catch blocks.
+Syntax:
+
+    try{  
+    expression; } //code to be written.  
+    catch(error){  
+    expression; } // code for handling the error.  
+
+try…catch example
+
+    <html>  
+    <head> Exception Handling</br></head>  
+    <body>  
+    <script>  
+    try{  
+    var a= ["34","32","5","31","24","44","67"]; //a is an array  
+    document.write(a);    // displays elements of a  
+    document.write(b); //b is undefined but still trying to fetch its value. Thus catch block will be invoked  
+    }catch(e){  
+    alert("There is error which shows "+e.message); //Handling error  
+    }  
+    </script>  
+    </body>  
+    </html>  
+
+Test it Now
+Throw Statement
+
+Throw statements are used for throwing user-defined errors. User can define and throw their own custom errors. When throw statement is executed, the statements present after it will not execute. The control will directly pass to the catch block.
+Syntax:
+
+    throw exception;  
+
+try…catch…throw syntax
+
+    try{  
+    throw exception; // user can define their own exception  
+    }  
+    catch(error){  
+    expression; }  // code for handling exception.  
+
+The exception can be a string, number, object, or boolean value.
+throw example with try…catch
+
+    <html>  
+    <head>Exception Handling</head>  
+    <body>  
+    <script>  
+    try {  
+       throw new Error('This is the throw keyword'); //user-defined throw statement.  
+    }  
+    catch (e) {  
+      document.write(e.message); // This will generate an error message  
+    }  
+    </script>  
+    </body>  
+    </html>  
+
+Test it Now
+
+With the help of throw statement, users can create their own errors.
+try…catch…finally statements
+
+Finally is an optional block of statements which is executed after the execution of try and catch statements. Finally block does not hold for the exception to be thrown. Any exception is thrown or not, finally block code, if present, will definitely execute. It does not care for the output too.
+Syntax:
+
+    try{  
+    expression;  
+    }  
+    catch(error){  
+    expression;  
+    }  
+    finally{  
+    expression; } //Executable code  
+
+try…catch…finally example
+
+    <html>  
+    <head>Exception Handling</head>  
+    <body>  
+    <script>  
+    try{  
+    var a=2;  
+    if(a==2)  
+    document.write("ok");  
+    }  
+    catch(Error){  
+    document.write("Error found"+e.message);  
+    }  
+    finally{  
+    document.write("Value of a is 2 ");  
+    }  
+    </script>  
+    </body>  
+    </html>   
+
+Test it Now
+
+Therefore, we can also use try/catch/throw/finally keyword together for handling complex code.
+
+
+
