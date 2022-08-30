@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JavaScript form validation - checking non-empty</title>
+<link rel='stylesheet' href='form-style.css' type='text/css' />      
+</head><body onload='document.form1.text1.focus()'>
+<div class="mail">
+<h2>Input an Phone No.[xxxxxxxxxx] and Submit</h2>
+<form name="form1" action="#">
+
+<input type='text' name='text1'/>
+<input type="submit" name="submit" value="Submit" onclick="phonenumber(document.form1.text1)"/></li>
+</form>
+</div>
+<script>
+function phonenumber(inputtxt)
+{
+  var phoneno = /^\d{10}$/;
+  if(inputtxt.value.match(phoneno))
+  {
+      return true;
+  }
+  else
+  {
+     alert("Not a valid Phone Number");
+     return false;
+  }
+  }
+
+
+</script>
+</body>
+</html>
+<script>
+</script>

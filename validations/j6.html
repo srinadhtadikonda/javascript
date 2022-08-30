@@ -1,0 +1,16 @@
+WebSite:<input type = "text" id = "txtUrl" value = "" />
+<input type = "submit" value = "Validate" onclick = "Validate()" />
+<script type="text/javascript">
+    function Validate() 
+{
+        var regexp = new RegExp("^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$");
+        var url = document.getElementById("txtUrl").value;
+        if (!regexp.test(url)) {
+            alert("Not valid Url!");
+        } else {
+            alert("Valid Url!");
+           window.location=url
+        }
+    }
+</script>
+
