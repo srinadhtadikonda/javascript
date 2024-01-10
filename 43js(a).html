@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select Value Display</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Select a value:</h2>
+
+    <select id="mySelect" onchange="displaySelectedValue()">
+        <option value="">Select an option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+    </select>
+
+    <p id="selectedValueParagraph">Selected value will be displayed here.</p>
+
+    <script>
+        function displaySelectedValue() {
+            // Get the selected value from the <select> element
+            var selectedValue = document.getElementById("mySelect").value;
+
+            // Display the selected value in the paragraph
+            document.getElementById("selectedValueParagraph").innerText = "Selected value: " + selectedValue;
+        }
+    </script>
+
+</body>
+
+</html>
