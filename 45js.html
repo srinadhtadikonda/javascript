@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select Multiple Values Display</title>
+</head>
+
+<body>
+
+    <h2>Select multiple values from the list:</h2>
+
+    <form>
+        <label for="myList">Choose values:</label>
+        <select id="myList" multiple onchange="displaySelectedValues()">
+            <option value="value1">Value 1</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+            <option value="value4">Value 4</option>
+        </select>
+    </form>
+
+    <p id="selectedValuesParagraph">Selected values will be displayed here.</p>
+
+    <script>
+        function displaySelectedValues() {
+            // Get the selected values from the <select> element
+            var selectedValues = [];
+            var selectElement = document.getElementById("myList");
+            for (var i = 0; i < selectElement.options.length; i++) {
+                if (selectElement.options[i].selected) {
+                    selectedValues.push(selectElement.options[i].value);
+                }
+            }
+
+            // Display the selected values in the paragraph
+            document.getElementById("selectedValuesParagraph").innerText = "Selected values: " + selectedValues.join(', ');
+        }
+    </script>
+
+</body>
+
+</html>
