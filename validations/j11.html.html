@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    #message {
+      margin-top: 10px;
+    }
+
+    .valid {
+      color: green;
+    }
+
+    .invalid {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Password Validation</h2>
+  <form id="passwordForm">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" onkeyup="validatePassword()">
+    
+    <div id="message">
+      <p>Password must contain:</p>
+      <p id="uppercase" class="invalid">At least one uppercase letter</p>
+      <p id="lowercase" class="invalid">At least one lowercase letter</p>
+      <p id="number" class="invalid">At least one digit</p>
+      <p id="symbol" class="invalid">At least one special character (e.g., !@#$%^&*)</p>
+      <p id="length" class="invalid">At least 8 characters</p>
+    </div>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function validatePassword() {
+      const password = document.getElementById("password");
+      const uppercase = document.getElementById("uppercase");
+      const lowercase = document.getElementById("lowercase");
+      const number = document.getElementById("number");
+      const symbol = document.getElementById("symbol");
+      const length = document.getElementById("length");
+
+      // Validate uppercase
+      const uppercaseRegex = /[A-Z]/;
+      if (uppercaseRegex.test(password.value)) {
+        uppercase.classList.remove("invalid");
+        uppercase.classList.add("valid");
+      } else {
+        uppercase.classList.remove("valid");
+        uppercase.classList.add("invalid");
+      }
+
+      // Validate lowercase
+      const lowercaseRegex = /[a-z]/;
+      if (lowercaseRegex.test(password.value)) {
+        lowercase.classList.remove("invalid");
+        lowercase.classList.add("valid");
+      } else {
+        lowercase.classList.remove("valid");
+        lowercase.classList.add("invalid");
+      }
+
+      // Validate number
+      const numberRegex = /\d/;
+      if (numberRegex.test(password.value)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate symbol
+      const symbolRegex = /[!@#$%^&*]/;
+      if (symbolRegex.test(password.value)) {
+        symbol.classList.remove("invalid");
+        symbol.classList.add("valid");
+      } else {
+        symbol.classList.remove("valid");
+        symbol.classList.add("invalid");
+      }
+
+      // Validate length
+      if (password.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+  </script>
+
+</body>
+</html>
