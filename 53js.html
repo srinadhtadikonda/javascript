@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+</head>
+<body>
+  <p id="p1">SEE THE MAGIC HERE</p><br><br>
+  <input type="button" id="btn1" value="clickme">
+
+  <script>
+    const btn1 = document.querySelector("#btn1"); // Fix selector
+    btn1.addEventListener("click", function () {
+      document.getElementById("p1").innerHTML = "You Clicked Button";
+    });
+  </script>
+</body>
+</html>
