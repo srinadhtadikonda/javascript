@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Select Value Display</title>
-<meta charset="UTF-8">
+    <title>Select Value Display</title>
+    <meta charset="UTF-8">
 </head>
 
-<body>
+<body onload="displaySelectedValue()">
 
     <h2>Select a value:</h2>
 
     <select id="mySelect" onchange="displaySelectedValue()">
-        <option value="">Select an option</option>
+        <option value="SCALE" selected>SCALE</option>
         <option value="PEN">PEN</option>
         <option value="BOOK">BOOK</option>
         <option value="ERASER">ERASER</option>
@@ -27,7 +27,7 @@
         }
     </script>
 
-  <p id="selectedValueParagraph">Selected value will be displayed here.</p>
+    <p id="selectedValueParagraph">Selected value will be displayed here.</p>
 
 </body>
 
