@@ -2,18 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>JavaScript form validation - checking non-empty</title>
-<link rel='stylesheet' href='form-style.css' type='text/css' />      
+<title>JavaScript form validation - checking non-empty</title> 
 </head><body onload='document.form1.text1.focus()'>
-<div class="mail">
+<div>
 <h2>Input Credit Card No.[Starting with 34 or 37, length 15 digits (American Express) and Submit</h2>
 <form name="form1" action="#">
-<ul>
-<li><input type='text' name='text1'/></li>
-<li>&nbsp;</li>
-<li class="submit"><input type="submit" name="submit" value="Submit" onclick="cardnumber(document.form1.text1)"/></li>
-<li>&nbsp;</li>
-</ul>
+<input type='text' name='text1'/></li>
+<input type="submit" name="submit" value="Submit" onclick="cardnumber(document.form1.text1)"/></li>
 </form>
 </div>
 </body>
@@ -23,6 +18,7 @@ function cardnumber(inputtxt)
   var cardno = /^(?:3[47][0-9]{13})$/;
   if(inputtxt.value.match(cardno))
         {
+	alert("Your Card is Valid");
       return true;
         }
       else
@@ -33,4 +29,3 @@ function cardnumber(inputtxt)
 }
 </script>
 </html>
-
