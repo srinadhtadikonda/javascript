@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <p id="ps1">SEE THE MAGIC HERE</p><br><br>
+    <input type="button" value="CLICK ME" id="magicButton">
+    
+    <script>
+        document.getElementById("magicButton").addEventListener("click", function() {
+            document.getElementById("ps1").innerHTML = "MAGIC HAPPENED!";
+        });
+    </script>
+</body>
+</html>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <p id="ps1">SEE THE MAGIC HERE</p><br><br>
+    <input type="button" value="CLICK ME" id="magicButton">
+    
+    <script>
+        document.getElementById("magicButton").addEventListener("click", () => {
+            document.getElementById("ps1").innerHTML = "MAGIC HAPPENED!";
+        });
+    </script>
+</body>
+</html>
+
