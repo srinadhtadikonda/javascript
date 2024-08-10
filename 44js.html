@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Select Multiple Values Display</title>
 </head>
-
 <body>
-
-    <h2>Select multiple values from the list:</h2>
-
     <form>
-        <label for="myList">Choose values:</label>
-        <select id="myList" multiple onchange="displaySelectedValues()">
-            <option value="value1">Value 1</option>
-            <option value="value2">Value 2</option>
-            <option value="value3">Value 3</option>
-            <option value="value4">Value 4</option>
+        <label for="mi">Choose values:</label>
+        <select id="mi" multiple onchange="dsv()">
+            <option value="PEN">PEN</option>
+            <option value="PENCIL">PENCIL</option>
+            <option value="BOOK">BOOK</option>
+            <option value="ERASER">ERASER</option>
         </select>
     </form>
 
-    <p id="selectedValuesParagraph">Selected values will be displayed here.</p>
+    <p id="ps">Selected values will be displayed here.</p>
 
     <script>
-        function displaySelectedValues() {
-            // Get the selected values from the <select> element
-            var selectedValues = [];
-            var selectElement = document.getElementById("myList");
-            for (var i = 0; i < selectElement.options.length; i++) {
-                if (selectElement.options[i].selected) {
-                    selectedValues.push(selectElement.options[i].value);
+        function dsv() 
+{
+            var x = [];
+            var y = document.getElementById("mi");
+            for (var i = 0; i < y.options.length; i++) 
+{
+                if (y.options[i].selected) 
+{
+                    x.push(y.options[i].value);
                 }
             }
-
-            // Display the selected values in the paragraph
-            document.getElementById("selectedValuesParagraph").innerText = "Selected values: " + selectedValues.join(', ');
+            document.getElementById("ps").innerText = "Selected values: " + x.join(', ');
         }
     </script>
-
 </body>
-
 </html>
