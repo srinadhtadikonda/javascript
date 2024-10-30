@@ -56,12 +56,18 @@
 </head>
 <body>
     <div class="container">
+
         <h2>Marks and Grade Calculator</h2>
+
         <label for="sno">Student Number:</label>
         <input type="text" id="sno" placeholder="Enter student number" required>
 
         <label for="sname">Student Name:</label>
         <input type="text" id="sname" placeholder="Enter student name" required>
+
+    <label for="class">Class:</label>
+        <input type="text" id="sclass" placeholder="Enter class" required>
+
 
         <label for="section">Section:</label>
         <input type="text" id="section" placeholder="Enter section" required>
@@ -97,6 +103,7 @@
             // Retrieve the input values
             const sno = document.getElementById('sno').value;
             const sname = document.getElementById('sname').value;
+           const sclass = document.getElementById('sclass').value;
             const section = document.getElementById('section').value;
             const marks = [
                 parseFloat(document.getElementById('mark1').value),
@@ -140,6 +147,7 @@
 
             var resultText = "<p>Student Number: " + sno + "</p>";
     resultText += "<p>Student Name: " + sname + "</p>";
+       resultText += "<p>Class: " + sclass + "</p>";
     resultText += "<p>Section: " + section + "</p>";
     resultText += "<p>Total Marks: " + total + "</p>";
     resultText += "<p>Average Marks: " + average.toString() + "</p>";
@@ -151,6 +159,7 @@
         function resetFields() {
             document.getElementById('sno').value = '';
             document.getElementById('sname').value = '';
+            document.getElementById('sclass').value = '';
             document.getElementById('section').value = '';
             document.getElementById('mark1').value = '';
             document.getElementById('mark2').value = '';
