@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show/Hide Paragraph</title>
+    <style>
+        #para {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="toggleBtn">Show</button>
+    <p id="para">This is a paragraph that can be shown or hidden.</p>
+
+    <script>
+        document.getElementById("toggleBtn").addEventListener("click", function() {
+            let para = document.getElementById("para");
+            if (para.style.display === "none") {
+                para.style.display = "block";
+                this.textContent = "Hide";
+            } else {
+                para.style.display = "none";
+                this.textContent = "Show";
+            }
+        });
+    </script>
+
+</body>
+</html>
