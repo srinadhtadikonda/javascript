@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo - Modular JavaScript</title>
+
+  <!-- Load main JS as an ES module -->
+  <script type="module" src="script.js" defer></script>
+</head>
+<body>
+  <label for="myTextarea">Address:</label><br>
+  <textarea id="myTextarea"></textarea><br><br>
+  <button id="myButton" type="button">Try it</button>
+</body>
+</html>
+✅ textareaHandler.js
+This file defines and exports a reusable function.
+
+javascript
+Copy code
+// textareaHandler.js
+
+export const setAddressText = (textareaId, text) => {
+  const textarea = document.getElementById(textareaId);
+  if (textarea) {
+    textarea.value = text;
+  } else {
+    console.error(`No textarea found with id: ${textareaId}`);
+  }
+};
+✅ script.js
+This is your main file — it imports and uses the exported function.
+
+javascript
+Copy code
+// script.js
+import { setAddressText } from './textareaHandler.js';
+
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.querySelector("#myButton");
+
+  button.addEventListener("click", () => {
+    setAddressText("myTextarea", "Fifth Avenue, New York City");
+  });
+});
