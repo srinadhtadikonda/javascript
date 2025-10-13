@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo</title>
+</head>
+<body>
+  <label for="myTextarea">Address:</label><br>
+  <textarea id="myTextarea"></textarea><br><br>
+  <button id="myButton" type="button">Try it</button>
+
+  <script>
+    // Wait until the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      const button = document.getElementById("myButton");
+      const textarea = document.getElementById("myTextarea");
+
+      button.addEventListener("click", () => {
+        textarea.value = "Fifth Avenue, New York City";
+      });
+    });
+  </script>
+</body>
+</html>
