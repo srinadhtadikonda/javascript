@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo - Modern JavaScript</title>
+  <!-- Load JavaScript as a module -->
+  <script type="module" src="script.js" defer></script>
+</head>
+<body>
+  <label for="myTextarea">Address:</label><br>
+  <textarea id="myTextarea"></textarea><br><br>
+  <button id="myButton" type="button">Try it</button>
+</body>
+</html>
+
+
+script.js
+
+// Use ES module syntax and modern arrow functions
+
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.querySelector("#myButton");
+  const textarea = document.querySelector("#myTextarea");
+
+  // Arrow function for click event
+  button.addEventListener("click", () => {
+    textarea.value = "Fifth Avenue, New York City";
+  });
+});
