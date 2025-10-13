@@ -1,0 +1,168 @@
+Project Structure
+marks-calculator/
+│
+├── index.html
+└── script.js
+
+✅ index.html (Modern Version)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marks and Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: aqua;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input {
+      padding: 8px;
+      width: 95%;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .button-container {
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #333;
+      line-height: 1.5;
+    }
+  </style>
+
+  <!-- Load JavaScript module -->
+  <script type="module" src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Marks and Grade Calculator</h2>
+
+    <label for="sno">Student Number:</label>
+    <input type="text" id="sno" placeholder="Enter student number" required>
+
+    <label for="sname">Student Name:</label>
+    <input type="text" id="sname" placeholder="Enter student name" required>
+
+    <label for="sclass">Class:</label>
+    <input type="text" id="sclass" placeholder="Enter class" required>
+
+    <label for="section">Section:</label>
+    <input type="text" id="section" placeholder="Enter section" required>
+
+    <!-- Marks fields -->
+    ${Array.from({ length: 6 }, (_, i) => `
+      <label for="mark${i + 1}">Mark ${i + 1}:</label>
+      <input type="number" id="mark${i + 1}" placeholder="Enter mark ${i + 1}" required>
+    `).join('')}
+
+    <div class="button-container">
+      <button id="calculateBtn">Calculate</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+</body>
+</html>
+
+
+(Note: Some editors won’t allow template literals in raw HTML, so keep the 6 <label> and <input> pairs manually if needed.)
+
+✅ script.js (Modern JavaScript ES6+)
+// script.js
+
+// Wait until the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  const resultDiv = document.querySelector("#result");
+  const calculateBtn = document.querySelector("#calculateBtn");
+  const resetBtn = document.querySelector("#resetBtn");
+
+  // ✅ Calculate button event
+  calculateBtn.addEventListener("click", () => {
+    const sno = getValue("sno");
+    const sname = getValue("sname");
+    const sclass = getValue("sclass");
+    const section = getValue("section");
+
+    const marks = Array.from({ length: 6 }, (_, i) => parseFloat(getValue(`mark${i + 1}`)) || 0);
+
+    // Validation
+    if (!sno || !sname || !sclass || !section || marks.some(isNaN)) {
+      resultDiv.innerHTML = `<p style="color:red;">⚠️ Please fill in all fields correctly.</p>`;
+      return;
+    }
+
+    const { total, average, grade, passOrFail } = calculateGrade(marks);
+
+    resultDiv.innerHTML = `
+      <p><strong>Student Number:</strong> ${sno}</p>
+      <p><strong>Student Name:</strong> ${sname}</p>
+      <p><strong>Class:</strong> ${sclass}</p>
+      <p><strong>Section:</strong> ${section}</p>
+      <p><strong>Total Marks:</strong> ${total}</p>
+      <p><strong>Average Marks:</strong> ${average.toFixed(2)}</p>
+      <p><strong>Grade:</strong> ${grade}</p>
+      <p><strong>Result:</strong> ${passOrFail}</p>
+    `;
+  });
+
+  // ✅ Reset button event
+  resetBtn.addEventListener("click", () => {
+    document.querySelectorAll("input").forEach(input => (input.value = ""));
+    resultDiv.innerHTML = "";
+  });
+});
+
+// 🔹 Helper function to get input value by id
+const getValue = id => document.getElementById(id).value.trim();
+
+// 🔹 Function to calculate total, average, and grade
+const calculateGrade = marks => {
+  const total = marks.reduce((sum, mark) => sum + mark, 0);
+  const average = total / marks.length;
+  const isFail = marks.some(mark => mark < 35);
+
+  let grade;
+  if (isFail) grade = "F";
+  else if (average >= 90) grade = "A";
+  else if (average >= 75) grade = "B";
+  else if (average >= 60) grade = "C";
+  else if (average >= 50) grade = "D";
+  else grade = "E";
+
+  const passOrFail = isFail ? "Fail" : "Pass";
+  return { total, average, grade, passOrFail };
+};
