@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <p id="p1">SEE THE MAGIC HERE</p><br><br>
+   
+    <button id="btn">CLICK ME</button> 
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded",()=>
+{
+    const nbtn=document.querySelector("#btn");
+    const np1=document.querySelector("#p1");
+    nbtn.addEventListener("click",()=>
+{
+    np1.innerText="you Clicked button";
+    });
+});
+</script>
+</html>
