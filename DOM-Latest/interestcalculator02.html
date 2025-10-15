@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Interest Calculator</title>
+
+  <style>
+    body {
+      background-color: bisque;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .d1 {
+      background-color: darkmagenta;
+      width: 400px;
+      color: yellow;
+      box-shadow: 4px 4px 6px #000;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px 0;
+    }
+
+    label {
+      display: inline-block;
+      width: 150px;
+      font-weight: bold;
+    }
+
+    .tbs1 {
+      border-radius: 5px;
+      background-color: green;
+      color: yellow;
+      border: none;
+      padding: 6px;
+      width: 60%;
+      text-align: center;
+    }
+
+    .tbs1:focus {
+      outline: 2px solid yellow;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      text-align: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 500px) {
+      .d1 {
+        width: 90%;
+      }
+
+      label {
+        width: 120px;
+      }
+
+      .tbs1 {
+        width: 55%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <form id="interestForm">
+    <div class="d1">
+      <h2 style="text-align:center;">💰 Interest Calculator</h2>
+      <table>
+        <tr>
+          <td>
+            <label for="v1">PRINCIPAL</label>
+            <input type="number" id="v1" name="principal" placeholder="Enter Principal" required class="tbs1" autofocus />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="v2">TIME (Years)</label>
+            <input type="number" id="v2" name="time" placeholder="Enter Time" required class="tbs1" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="v3">RATE (%)</label>
+            <input type="number" id="v3" name="rate" placeholder="Enter Rate" required class="tbs1" />
+          </td>
+        </tr>
+      </table>
+
+      <p id="result">Enter values above to calculate...</p>
+    </div>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const principalInput = document.getElementById("v1");
+      const timeInput = document.getElementById("v2");
+      const rateInput = document.getElementById("v3");
+      const resultDisplay = document.getElementById("result");
+
+      const calculateInterests = () => {
+        const p = parseFloat(principalInput.value);
+        const t = parseFloat(timeInput.value);
+        const r = parseFloat(rateInput.value);
+
+        if (isNaN(p) || isNaN(t) || isNaN(r) || p <= 0 || t <= 0 || r <= 0) {
+          resultDisplay.textContent = "⚠️ Please enter valid positive values.";
+          return;
+        }
+
+        const si = (p * t * r) / 100;
+        const ci = p * Math.pow(1 + r / 100, t) - p;
+
+        resultDisplay.innerHTML = `
+          📘 Simple Interest: <strong>₹${si.toFixed(2)}</strong><br>
+          📗 Compound Interest: <strong>₹${ci.toFixed(2)}</strong>
+        `;
+      };
+
+      // Add real-time event listeners
+      [principalInput, timeInput, rateInput].forEach(input => {
+        input.addEventListener("input", calculateInterests);
+      });
+    });
+  </script>
+</body>
+</html>
