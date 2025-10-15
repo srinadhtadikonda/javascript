@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electricity Bill Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: pink;
+      margin: 50px;
+    }
+
+    .container {
+      background-color: #008080;
+      padding: 25px 40px;
+      border-radius: 10px;
+      text-align: start;
+      width: 300px;
+      color: white;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid red;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Electricity Bill Calculator</h2>
+    <label for="units">Enter Electricity Units:</label>
+    <input type="number" id="units" placeholder="Enter number of units" min="0">
+    <button id="calculateBtn">Calculate Bill</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const unitsInput = document.querySelector("#units");
+      const resultDisplay = document.querySelector("#result");
+      const calculateBtn = document.querySelector("#calculateBtn");
+
+      const calculateBill = () => {
+        const units = parseFloat(unitsInput.value);
+
+        if (isNaN(units) || units < 0) {
+          resultDisplay.textContent = "⚠️ Please enter a valid number of units.";
+          return;
+        }
+
+        let bill = 0;
+
+        if (units <= 50) {
+          bill = units * 0.50;
+        } else if (units <= 150) {
+          bill = (50 * 0.50) + ((units - 50) * 0.75);
+        } else if (units <= 250) {
+          bill = (50 * 0.50) + (100 * 0.75) + ((units - 150) * 1.20);
+        } else {
+          bill = (50 * 0.50) + (100 * 0.75) + (100 * 1.20) + ((units - 250) * 1.50);
+        }
+
+        const surcharge = bill * 0.20;
+        const totalBill = bill + surcharge;
+
+        resultDisplay.textContent = `💡 Total Electricity Bill: ₹${totalBill.toFixed(2)}`;
+      };
+
+      calculateBtn.addEventListener("click", calculateBill);
+    });
+  </script>
+</body>
+</html>
