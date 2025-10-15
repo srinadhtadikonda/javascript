@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Calculator</title>
+  <style>
+    body {
+      background-color: bisque;
+      font-family: Arial, sans-serif;
+    }
+
+    table, tr, td {
+      border-collapse: collapse;
+      border-style: none;
+    }
+
+    .d1 {
+      background-color: darkmagenta;
+      width: 250px;
+      margin: 250px auto;
+      color: yellow;
+      box-shadow: 4px 4px 4px #000;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .bts1 {
+      border-radius: 5px;
+      background-color: aqua;
+      border: none;
+      padding: 5px 10px;
+      margin: 3px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .bts1:hover {
+      background-color: deepskyblue;
+    }
+
+    .tbs1 {
+      border-radius: 5px;
+      background-color: green;
+      color: yellow;
+      border: none;
+      padding: 5px;
+      margin: 5px 0;
+      width: 90%;
+      text-align: center;
+    }
+
+    label {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <form id="calcForm">
+    <div class="d1">
+      <table>
+        <tr>
+          <td>
+            <label for="v1">A</label>
+            <input type="number" id="v1" name="aval" placeholder="a value" required autofocus class="tbs1">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="v2">B</label>
+            <input type="number" id="v2" name="bval" placeholder="b value" required class="tbs1">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="v3">C</label>
+            <input type="text" id="v3" name="cval" placeholder="result" class="tbs1" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div style="margin-top: 10px;">
+              <button type="button" class="bts1" data-op="+">+</button>
+              <button type="button" class="bts1" data-op="-">-</button>
+              <button type="button" class="bts1" data-op="*">*</button>
+              <button type="button" class="bts1" data-op="/">/</button>
+              <button type="button" class="bts1" data-op="%">%</button>
+              <button type="reset" class="bts1">←</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const v1 = document.getElementById("v1");
+      const v2 = document.getElementById("v2");
+      const v3 = document.getElementById("v3");
+      const buttons = document.querySelectorAll(".bts1[data-op]");
+
+      const calculate = (operator) => {
+        const a = parseFloat(v1.value);
+        const b = parseFloat(v2.value);
+
+        if (isNaN(a) || isNaN(b)) {
+          v3.value = "Invalid input";
+          return;
+        }
+
+        let result;
+
+        switch (operator) {
+          case "+": result = a + b; break;
+          case "-": result = a - b; break;
+          case "*": result = a * b; break;
+          case "/": 
+            result = b !== 0 ? (a / b).toFixed(2) : "Div by 0";
+            break;
+          case "%": result = a % b; break;
+          default: result = "";
+        }
+
+        v3.value = result;
+      };
+
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => calculate(btn.dataset.op));
+      });
+    });
+  </script>
+</body>
+</html>
