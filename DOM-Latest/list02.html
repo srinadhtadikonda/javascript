@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Multiple Values Display</title>
+</head>
+<body>
+  <form id="itemForm">
+    <label for="mi">Choose values:</label>
+    <select id="mi" multiple>
+      <option value="PEN">PEN</option>
+      <option value="PENCIL">PENCIL</option>
+      <option value="BOOK">BOOK</option>
+      <option value="ERASER">ERASER</option>
+    </select>
+  </form>
+
+  <p id="ps">Selected values will be displayed here.</p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const selectBox = document.getElementById("mi");
+      const display = document.getElementById("ps");
+
+      selectBox.addEventListener("change", () => {
+        const selectedValues = Array.from(selectBox.selectedOptions)
+                                   .map(option => option.value);
+        display.textContent = selectedValues.length
+          ? `Selected values: ${selectedValues.join(", ")}`
+          : "No values selected.";
+      });
+    });
+  </script>
+</body>
+</html>
