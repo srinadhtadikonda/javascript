@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Order</title>
+</head>
+<body>
+  <p>How would you like your coffee?</p>
+
+  <form id="coffeeForm">
+    <label><input type="checkbox" name="coffee" value="cream"> With cream</label><br>
+    <label><input type="checkbox" name="coffee" value="sugar"> With sugar</label><br>
+    <input type="text" id="order" size="50" readonly>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#coffeeForm");
+      const orderInput = document.querySelector("#order");
+      const checkboxes = form.querySelectorAll("input[name='coffee']");
+
+      const updateOrder = () => {
+        const selected = [...checkboxes]
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+
+        orderInput.value = selected.length
+          ? `You ordered coffee with ${selected.join(", ")}`
+          : "";
+      };
+
+      checkboxes.forEach(cb => cb.addEventListener("change", updateOrder));
+    });
+  </script>
+</body>
+</html>
