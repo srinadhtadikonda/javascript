@@ -1,27 +1,56 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numeric Validation Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+
+    input[type="text"] {
+      padding: 6px;
+      font-size: 16px;
+      margin-right: 10px;
+      width: 100px;
+    }
+
+    input[type="submit"] {
+      padding: 6px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <form name="fm1">
-    <label for="fage">Age:</label>
-    <input type="text" name="fage" id="fage" autofocus>
-    <input type="submit" value="submit" onClick="return allnumeric(document.fm1.fage)">
-  </form>
 
-  <script type="text/javascript">
-    function allnumeric(inputtxt) {
-      var numbers = /^[0-9]+$/;
-      if(inputtxt.value.match(numbers)) {
-        alert('Your Registration number has been accepted.');
-        return true;
+<form id="ageForm">
+  <label for="fage">Age:</label>
+  <input type="text" id="fage" name="fage" autofocus>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("ageForm");
+    const ageInput = document.getElementById("fage");
+
+    form.addEventListener("submit", (event) => {
+      const ageValue = ageInput.value.trim();
+      const numericRegex = /^[0-9]+$/;
+
+      if (!numericRegex.test(ageValue)) {
+        alert("⚠️ Please input numeric characters only");
+        ageInput.focus();
+        event.preventDefault(); // Prevent form submission
       } else {
-        alert('Please input numeric characters only');
-        inputtxt.focus(); // Set focus here instead of document.fm1.fage.focus()
-        return false; // Prevent form submission
+        alert("✅ Your registration number has been accepted.");
       }
-    }
-  </script>
+    });
+  });
+</script>
+
 </body>
 </html>
