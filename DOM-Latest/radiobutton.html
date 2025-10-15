@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+</head>
+<body>
+  <p>How would you like your coffee?</p>
+
+  <form id="coffeeForm">
+    <label><input type="radio" name="coffee" value="cream"> With cream</label><br>
+    <label><input type="radio" name="coffee" value="sugar"> With sugar</label><br>
+    <input type="text" id="tb" size="50" readonly>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#coffeeForm");
+      const orderBox = document.querySelector("#tb");
+      const radios = form.querySelectorAll("input[name='coffee']");
+
+      const updateOrder = () => {
+        const selected = [...radios].find(radio => radio.checked);
+        orderBox.value = selected
+          ? `You ordered coffee with ${selected.value}`
+          : "";
+      };
+
+      radios.forEach(radio => radio.addEventListener("change", updateOrder));
+    });
+  </script>
+</body>
+</html>
