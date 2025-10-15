@@ -1,29 +1,55 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Validation Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+
+    input[type="text"] {
+      padding: 6px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      padding: 6px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<form name="fm1">
-<label for="fname">Name:</label><input type="text" name="fname">
-<input type="submit" value="submit" onClick="alltext(document.fm1.fname)">
+
+<form id="nameForm">
+  <label for="fname">Name:</label>
+  <input type="text" id="fname" name="fname">
+  <input type="submit" value="Submit">
 </form>
-<script type="text/javascript">
-function alltext(inputtxt)
-   {
-      var text = /^[A-Za-z]+$/;
-      if(inputtxt.value.match(text))
-      {
-      alert('Your Name has accepted....');
-      document.fm1.fname.focus();
-      return true;
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("nameForm");
+    const nameInput = document.getElementById("fname");
+
+    form.addEventListener("submit", (event) => {
+      const nameValue = nameInput.value.trim();
+      const textRegex = /^[A-Za-z]+$/;
+
+      if (!textRegex.test(nameValue)) {
+        alert("⚠️ Please input characters only");
+        nameInput.focus();
+        event.preventDefault(); // Prevent form submission
+      } else {
+        alert("✅ Your Name has been accepted.");
       }
-      else
-      {
-      alert('Please input  characters only');
-      document.fm1.fname.focus();
-      return false;
-      }
-   } 
+    });
+  });
 </script>
+
+</body>
 </html>
