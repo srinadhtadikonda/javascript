@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+</head>
+<body>
+  <label for="mysp">Items:</label>
+  <select id="mysp">
+    <option value="pen">PEN</option>
+    <option value="pencil">PENCIL</option>
+    <option value="book">BOOK</option>
+    <option value="eraser">ERASER</option>
+    <option value="scale">SCALE</option>
+    <option value="bag">BAG</option>
+  </select>
+
+  <br><br>
+
+  <table>
+    <tr>
+      <td>Your Selection = </td>
+      <td><p id="ps"></p></td>
+    </tr>
+  </table>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const selectItem = document.getElementById("mysp");
+      const displaySelection = document.getElementById("ps");
+
+      selectItem.addEventListener("change", () => {
+        const selectedValue = selectItem.value;
+        displaySelection.textContent = selectedValue.toUpperCase();
+      });
+    });
+  </script>
+</body>
+</html>
