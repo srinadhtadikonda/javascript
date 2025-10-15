@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+</head>
+<body>
+  <p>This page contains HTML and JavaScript.</p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const name = prompt("Enter your name:", "");
+      const age = prompt("Enter your age:", "");
+
+      if (!name || !age) {
+        alert("Please provide both name and age.");
+        return;
+      }
+
+      const ageNum = parseInt(age, 10);
+
+      if (isNaN(ageNum)) {
+        alert("Please enter a valid number for age.");
+        return;
+      }
+
+      if (ageNum < 18) {
+        alert("Not eligible to visit — redirecting to Google.");
+        window.location.href = "https://www.google.com";
+      } else {
+        alert(`Welcome to my site, ${name}!`);
+      }
+    });
+  </script>
+</body>
+</html>
