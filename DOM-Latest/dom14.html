@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Demo</title>
+  <style>
+    fieldset {
+      border: 1px solid #ccc;
+    }
+    legend {
+      padding: 0 5px;
+      font-size: 14px;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid #007bff;
+      border-radius: 8px;
+      width: 400px;
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <form id="fm1">
+    <label for="fna">First Name:</label>
+    <input type="text" id="fna" name="fna" placeholder="First Name" required autofocus>
+    <br><br>
+
+    <label for="lna">Last Name:</label>
+    <input type="text" id="lna" name="lna" placeholder="Last Name" required>
+    <br><br>
+
+    <fieldset style="width:300px;">
+      <legend>Course:</legend>
+      <input type="checkbox" id="dca" name="course" value="DCA">
+      <label for="dca">DCA</label>
+
+      <input type="checkbox" id="wdev" name="course" value="Web Developer">
+      <label for="wdev">Web Developer</label>
+
+      <input type="checkbox" id="wdes" name="course" value="Web Designer">
+      <label for="wdes">Web Designer</label>
+    </fieldset>
+    <br>
+
+    <fieldset style="width:300px;">
+      <legend>Fee:</legend>
+      <input type="radio" id="cash" name="fees" value="Cash" checked>
+      <label for="cash">Cash</label>
+
+      <input type="radio" id="cheque" name="fees" value="Cheque">
+      <label for="cheque">Cheque</label>
+
+      <input type="radio" id="dd" name="fees" value="DD">
+      <label for="dd">DD</label>
+    </fieldset>
+    <br>
+
+    <label for="apl">Place:</label>
+    <select id="apl" name="apl">
+      <option value="Ongole">Ongole</option>
+      <option value="Nellore">Nellore</option>
+      <option value="Guntur">Guntur</option>
+      <option value="Tirupathi">Tirupathi</option>
+      <option value="Gudur">Gudur</option>
+      <option value="Vijayawada">Vijayawada</option>
+    </select>
+    <br><br>
+
+    <label for="bq">Basic Qualification:</label>
+    <select id="bq" name="bq" multiple>
+      <option value="SSC">SSC</option>
+      <option value="Inter">Inter</option>
+      <option value="Degree">Degree</option>
+      <option value="PG">PG</option>
+      <option value="Diploma">Diploma</option>
+    </select>
+    <br><br>
+
+    <label for="adr">Address:</label>
+    <textarea id="adr" name="adr"></textarea>
+    <br><br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#fm1");
+      const resultDiv = document.querySelector("#result");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const firstName = document.querySelector("#fna").value;
+        const lastName = document.querySelector("#lna").value;
+        const address = document.querySelector("#adr").value;
+        const place = document.querySelector("#apl").value;
+
+        // Get checked checkboxes
+        const courses = [...document.querySelectorAll('input[name="course"]:checked')]
+          .map(c => c.value)
+          .join(", ") || "None";
+
+        // Get selected radio value
+        const fee = document.querySelector('input[name="fees"]:checked').value;
+
+        // Get multiple selected qualifications
+        const qualifications = [...document.querySelector("#bq").selectedOptions]
+          .map(opt => opt.value)
+          .join(", ") || "None";
+
+        // Display result
+        resultDiv.innerHTML = `
+          <h3>Submitted Information</h3>
+          <p><strong>First Name:</strong> ${firstName}</p>
+          <p><strong>Last Name:</strong> ${lastName}</p>
+          <p><strong>Courses:</strong> ${courses}</p>
+          <p><strong>Fee Type:</strong> ${fee}</p>
+          <p><strong>Place:</strong> ${place}</p>
+          <p><strong>Basic Qualification:</strong> ${qualifications}</p>
+          <p><strong>Address:</strong> ${address}</p>
+        `;
+      });
+    });
+  </script>
+</body>
+</html>
