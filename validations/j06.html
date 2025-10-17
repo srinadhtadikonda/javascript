@@ -1,16 +1,33 @@
-WebSite:<input type = "text" id = "txtUrl" value = "" />
-<input type = "submit" value = "Validate" onclick = "Validate()" />
-<script type="text/javascript">
-    function Validate() 
-{
-        var regexp = new RegExp("^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$");
-        var url = document.getElementById("txtUrl").value;
-        if (!regexp.test(url)) {
-            alert("Not valid Url!");
-        } else {
-            alert("Valid Url!");
-           window.location=url
-        }
-    }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Validation Demo</title>
+</head>
+<body>
+  <label for="txtUrl">Website:</label>
+  <input type="text" id="txtUrl" placeholder="Enter website URL" />
+  <button type="button" id="btnValidate">Validate</button>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnValidate = document.querySelector("#btnValidate");
+      const urlInput = document.querySelector("#txtUrl");
+
+      btnValidate.addEventListener("click", () => {
+        const url = urlInput.value.trim();
+        const urlPattern = /^https?:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(\d+)*)*(\/?)([a-zA-Z0-9\-\.\?,'\/\\\+&%$#_]*)?$/;
+
+        if (!urlPattern.test(url)) {
+          alert("⚠️ Not a valid URL!");
+          urlInput.focus();
+        } else {
+          alert("✅ Valid URL!");
+          window.location.href = url;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
