@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>JavaScript form validation - checking non-empty</title>
-<link rel='stylesheet' href='form-style.css' type='text/css' />      
-</head><body onload='document.form1.text1.focus()'>
-<div class="mail">
-<h2>Input an Phone No.[xxxxxxxxxx] and Submit</h2>
-<form name="form1" action="#">
+  <meta charset="utf-8">
+  <title>JavaScript Form Validation - Phone Number</title>
+  <link rel="stylesheet" href="form-style.css" type="text/css">
+</head>
+<body>
+  <div class="mail">
+    <h2>Enter a Phone Number (10 digits) and Submit</h2>
+    <form id="phoneForm">
+      <input type="text" id="phoneInput" placeholder="Enter 10-digit phone number" autofocus>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-<input type='text' name='text1'/>
-<input type="submit" name="submit" value="Submit" onclick="phonenumber(document.form1.text1)"/></li>
-</form>
-</div>
-<script>
-function phonenumber(inputtxt)
-{
-  var phoneno = /^\d{10}$/;
-  if(inputtxt.value.match(phoneno))
-  {
-      return true;
-  }
-  else
-  {
-     alert("Not a valid Phone Number");
-     return false;
-  }
-  }
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#phoneForm");
+      const phoneInput = document.querySelector("#phoneInput");
 
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent page reload
 
-</script>
+        const phone = phoneInput.value.trim();
+        const phonePattern = /^\d{10}$/;
+
+        if (phonePattern.test(phone)) {
+          alert("✅ Valid Phone Number");
+          // You can proceed with form submission here if needed
+        } else {
+          alert("❌ Not a valid Phone Number. Please enter exactly 10 digits.");
+          phoneInput.focus();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-<script>
-</script>
