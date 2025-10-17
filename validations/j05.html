@@ -1,29 +1,37 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Validation Demo</title>
 </head>
 <body>
-<form name="fm1">
-<label for="fname">Email:</label><input type="text" name="fname">
-<input type="submit" value="submit" onClick="ValidateEmail(document.fm1.fname)">
-</form>
-<script type="text/javascript">
-function ValidateEmail(inputText)
-{
-var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-if(inputText.value.match(mailformat))
-{
-alert("Valid email address!");
-document.fm1.fname.focus();
-return true;
-}
-else
-{
-alert("You have entered an invalid email address!");
-document.fm1.fname.focus();
-return false;
-}
-}
-</script>
+  <form id="fm1">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" placeholder="Enter your email" required>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#fm1");
+      const emailInput = document.querySelector("#email");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // stop form from reloading the page
+
+        const emailValue = emailInput.value.trim();
+        const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if (mailFormat.test(emailValue)) {
+          alert("✅ Valid email address!");
+          emailInput.focus();
+        } else {
+          alert("⚠️ Invalid email address! Please enter a valid one.");
+          emailInput.focus();
+        }
+      });
+    });
+  </script>
+</body>
 </html>
