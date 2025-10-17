@@ -8,18 +8,88 @@
     fieldset {
       border: 1px solid #ccc;
     }
+
     legend {
       padding: 0 5px;
       font-size: 14px;
     }
-    #result {
-      margin-top: 20px;
-      padding: 10px;
-      border: 2px solid #007bff;
-      border-radius: 8px;
+
+    /* === Modal Styles === */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      border-radius: 12px;
       width: 400px;
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
+      padding: 20px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+      animation: fadeInUp 0.4s ease;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #007bff;
+    }
+
+    .close {
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    .modal-body {
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .modal-body strong {
+      color: #007bff;
+    }
+
+    /* Smooth fade-out animation */
+    .modal.hide {
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
   </style>
 </head>
@@ -88,12 +158,23 @@
     <input type="reset" value="Reset">
   </form>
 
-  <div id="result"></div>
+  <!-- Modal -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Submitted Information</h3>
+        <span class="close" id="closeModal">&times;</span>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.querySelector("#fm1");
-      const resultDiv = document.querySelector("#result");
+      const modal = document.querySelector("#infoModal");
+      const modalBody = document.querySelector("#modalBody");
+      const closeModal = document.querySelector("#closeModal");
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -103,30 +184,41 @@
         const address = document.querySelector("#adr").value;
         const place = document.querySelector("#apl").value;
 
-        // Get checked checkboxes
         const courses = [...document.querySelectorAll('input[name="course"]:checked')]
           .map(c => c.value)
           .join(", ") || "None";
 
-        // Get selected radio value
         const fee = document.querySelector('input[name="fees"]:checked').value;
 
-        // Get multiple selected qualifications
         const qualifications = [...document.querySelector("#bq").selectedOptions]
           .map(opt => opt.value)
           .join(", ") || "None";
 
-        // Display result
-        resultDiv.innerHTML = `
-          <h3>Submitted Information</h3>
+        modalBody.innerHTML = `
           <p><strong>First Name:</strong> ${firstName}</p>
           <p><strong>Last Name:</strong> ${lastName}</p>
           <p><strong>Courses:</strong> ${courses}</p>
           <p><strong>Fee Type:</strong> ${fee}</p>
           <p><strong>Place:</strong> ${place}</p>
-          <p><strong>Basic Qualification:</strong> ${qualifications}</p>
+          <p><strong>Qualification:</strong> ${qualifications}</p>
           <p><strong>Address:</strong> ${address}</p>
         `;
+
+        modal.classList.add("show");
+      });
+
+      const hideModal = () => {
+        modal.classList.add("hide");
+        setTimeout(() => {
+          modal.classList.remove("show", "hide");
+          modal.style.display = "none";
+        }, 400);
+      };
+
+      closeModal.addEventListener("click", hideModal);
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) hideModal();
       });
     });
   </script>
