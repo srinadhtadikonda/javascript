@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>JavaScript form validation - Password Checking - 4</title>
-<link rel='stylesheet' href='form-style.css' type='text/css' />
+  <meta charset="utf-8">
+  <title>Password Validation - Modern JavaScript</title>
+  <link rel="stylesheet" href="form-style.css" type="text/css">
 </head>
-<body onload='document.form1.text1.focus()'>
-<div class="mail">
-<h2>Input Password and Submit [8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character]</h2>
-<form name="form1" action="#">
-<ul>
-<li><input type='text' name='text1'/></li>
-<li class="rq">*Enter numbers only.</li>
-<li>&nbsp;</li>
-<li><input type="submit" name="submit" value="Submit" onclick="allnumericplusminus(document.form1.text1)" /></li>
-<li>&nbsp;</li>
-</ul>
-</form>
-</div>
-<script>
-function CheckPassword(inputtxt) 
-{ 
-var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-if(inputtxt.value.match(decimal)) 
-{ 
-alert('Correct, try another...')
-return true;
-}
-else
-{ 
-alert('Wrong...!')
-return false;
-}
-} 
-</script>
+<body>
+  <div class="mail">
+    <h2>
+      Input Password and Submit 
+      <br>
+      <small>[8–15 characters, must include at least one lowercase letter, one uppercase letter, one digit, and one special character]</small>
+    </h2>
+
+    <form id="passwordForm">
+      <ul>
+        <li>
+          <input 
+            type="password" 
+            id="passwordInput" 
+            placeholder="Enter your password" 
+            autofocus
+          >
+        </li>
+        <li class="rq">* Must meet all the criteria above.</li>
+        <li>&nbsp;</li>
+        <li>
+          <button type="submit">Submit</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#passwordForm");
+      const passwordInput = document.querySelector("#passwordInput");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // prevent page reload
+
+        const password = passwordInput.value.trim();
+        const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+        if (passwordPattern.test(password)) {
+          alert("✅ Strong password! Validation successful.");
+        } else {
+          alert("❌ Invalid password! Must be 8–15 characters and include uppercase, lowercase, number, and special character.");
+          passwordInput.focus();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
