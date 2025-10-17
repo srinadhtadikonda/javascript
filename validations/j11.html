@@ -17,6 +17,9 @@
 
     input {
       margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     #message {
@@ -37,7 +40,7 @@
   <h2>Password Validation</h2>
   <form id="passwordForm">
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" onkeyup="validatePassword()">
+    <input type="password" id="password" name="password" placeholder="Enter your password">
     
     <div id="message">
       <p>Password must contain:</p>
@@ -52,63 +55,43 @@
   </form>
 
   <script>
-    function validatePassword() {
-      const password = document.getElementById("password");
-      const uppercase = document.getElementById("uppercase");
-      const lowercase = document.getElementById("lowercase");
-      const number = document.getElementById("number");
-      const symbol = document.getElementById("symbol");
-      const length = document.getElementById("length");
+    document.addEventListener("DOMContentLoaded", () => {
+      const passwordInput = document.getElementById("password");
+      const rules = {
+        uppercase: /[A-Z]/,
+        lowercase: /[a-z]/,
+        number: /\d/,
+        symbol: /[!@#$%^&*]/,
+        length: /.{8,}/
+      };
 
-      // Validate uppercase
-      const uppercaseRegex = /[A-Z]/;
-      if (uppercaseRegex.test(password.value)) {
-        uppercase.classList.remove("invalid");
-        uppercase.classList.add("valid");
-      } else {
-        uppercase.classList.remove("valid");
-        uppercase.classList.add("invalid");
-      }
+      const updateRule = (ruleId, isValid) => {
+        const elem = document.getElementById(ruleId);
+        elem.classList.toggle("valid", isValid);
+        elem.classList.toggle("invalid", !isValid);
+      };
 
-      // Validate lowercase
-      const lowercaseRegex = /[a-z]/;
-      if (lowercaseRegex.test(password.value)) {
-        lowercase.classList.remove("invalid");
-        lowercase.classList.add("valid");
-      } else {
-        lowercase.classList.remove("valid");
-        lowercase.classList.add("invalid");
-      }
+      passwordInput.addEventListener("input", () => {
+        const value = passwordInput.value;
+        updateRule("uppercase", rules.uppercase.test(value));
+        updateRule("lowercase", rules.lowercase.test(value));
+        updateRule("number", rules.number.test(value));
+        updateRule("symbol", rules.symbol.test(value));
+        updateRule("length", rules.length.test(value));
+      });
 
-      // Validate number
-      const numberRegex = /\d/;
-      if (numberRegex.test(password.value)) {
-        number.classList.remove("invalid");
-        number.classList.add("valid");
-      } else {
-        number.classList.remove("valid");
-        number.classList.add("invalid");
-      }
-
-      // Validate symbol
-      const symbolRegex = /[!@#$%^&*]/;
-      if (symbolRegex.test(password.value)) {
-        symbol.classList.remove("invalid");
-        symbol.classList.add("valid");
-      } else {
-        symbol.classList.remove("valid");
-        symbol.classList.add("invalid");
-      }
-
-      // Validate length
-      if (password.value.length >= 8) {
-        length.classList.remove("invalid");
-        length.classList.add("valid");
-      } else {
-        length.classList.remove("valid");
-        length.classList.add("invalid");
-      }
-    }
+      // Optional: Prevent form submission if password is invalid
+      const form = document.getElementById("passwordForm");
+      form.addEventListener("submit", (e) => {
+        const value = passwordInput.value;
+        const isValid = Object.values(rules).every(regex => regex.test(value));
+        if (!isValid) {
+          e.preventDefault();
+          alert("Password does not meet all requirements!");
+          passwordInput.focus();
+        }
+      });
+    });
   </script>
 
 </body>
