@@ -1,29 +1,36 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Validation Demo</title>
 </head>
 <body>
-<form name="fm1">
-<label for="fage">Age:</label><input type="text" name="fage">
-<input type="submit" value="submit" onClick="allnumeric(document.fm1.fage)">
-</form>
-<script type="text/javascript">
-function allnumeric(inputtxt)
-   {
-      var numbers = /^\d{2}$/
-      if(inputtxt.value.match(numbers))
-      {
-      alert('Your Registration number has accepted....');
-      document.fm1.fage.focus();
-      return true;
-      }
-      else
-      {
-      alert('Age must be 2 Digit Number');
-      document.fm1.fage.focus();
-      return false;
-      }
-   } 
-</script>
+  <form id="fm1">
+    <label for="fage">Age:</label>
+    <input type="text" id="fage" name="fage" placeholder="Enter age">
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#fm1");
+      const ageInput = document.querySelector("#fage");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // prevent page reload
+        const ageValue = ageInput.value.trim();
+        const numbers = /^\d{2}$/; // exactly 2 digits
+
+        if (numbers.test(ageValue)) {
+          alert("✅ Your age has been accepted!");
+          ageInput.focus();
+        } else {
+          alert("⚠️ Age must be a 2-digit number.");
+          ageInput.focus();
+        }
+      });
+    });
+  </script>
+</body>
 </html>
