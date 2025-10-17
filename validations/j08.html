@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>JavaScript form validation - checking non-empty</title> 
+  <meta charset="utf-8">
+  <title>Credit Card Validation - American Express</title>
 </head>
 <body>
-<h2>Input Credit Card No.[Starting with 34 or 37, length 15 digits (American Express) and Submit</h2>
-<form name="form1" action="#">
-<input type='text' name='text1' autofocus></li>
-<input type="submit" name="submit" value="Submit" onclick="cardnumber(document.form1.text1)"/></li>
-</form>
+  <h2>Enter Credit Card No. (Starts with 34 or 37, 15 digits - American Express)</h2>
+
+  <form id="cardForm">
+    <input 
+      type="text" 
+      id="cardInput" 
+      placeholder="Enter 15-digit Amex card number" 
+      autofocus
+    >
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("#cardForm");
+      const cardInput = document.querySelector("#cardInput");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form reload
+
+        const cardNumber = cardInput.value.trim();
+        const amexPattern = /^(?:3[47][0-9]{13})$/; // 34 or 37 followed by 13 digits
+
+        if (amexPattern.test(cardNumber)) {
+          alert("✅ Your American Express Card number is valid!");
+        } else {
+          alert("❌ Not a valid American Express credit card number!");
+          cardInput.focus();
+        }
+      });
+    });
+  </script>
 </body>
-<script>
-function cardnumber(inputtxt)
-{
-  var cardno = /^(?:3[47][0-9]{13})$/;
-  if(inputtxt.value.match(cardno))
-        {
-	alert("Your Card is Valid");
-      return true;
-        }
-      else
-        {
-        alert("Not a valid Amercican Express credit card number!");
-        return false;
-        }
-}
-</script>
 </html>
