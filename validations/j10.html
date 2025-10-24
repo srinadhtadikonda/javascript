@@ -1,186 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Application Form - Modern JS</title>
-<style>
-body {
-    font-size: 16px;
-    background: #f9f9f9;
-    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-}
-h2 {
-    text-align: center;
-    text-decoration: underline;
-}
-form {
-    width: 300px;
-    background: #fff;
-    padding: 15px 40px 40px;
-    border: 1px solid #ccc;
-    margin: 50px auto 0;
-    border-radius: 5px;
-}
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-label i {
-    color: #999;
-    font-size: 80%;
-}
-input, select {
-    border: 1px solid #ccc;
-    padding: 10px;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 2px;
-}
-.row {
-    padding-bottom: 10px;
-}
-.form-inline {
-    border: 1px solid #ccc;
-    padding: 8px 10px 4px;
-    border-radius: 2px;
-}
-.form-inline label, .form-inline input {
-    display: inline-block;
-    width: auto;
-    padding-right: 15px;
-}
-.error {
-    color: red;
-    font-size: 90%;
-}
-input[type="submit"] {
-    font-size: 110%;
-    font-weight: 100;
-    background: #006dcc;
-    border-color: #016BC1;
-    box-shadow: 0 3px 0 #0165b6;
-    color: #fff;
-    margin-top: 10px;
-    cursor: pointer;
-}
-input[type="submit"]:hover {
-    background: #0165b6;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      margin-top: 0;
+    }
+
+    form {
+      width: 400px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    label {
+      display: inline-block;
+      width: 130px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], select, textarea {
+      width: 220px;
+      padding: 6px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      height: 60px;
+      resize: none;
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+
+    legend {
+      padding: 0 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    input[type="submit"], input[type="reset"] {
+      width: 100px;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2980b9;
+    }
+
+    input[type="reset"] {
+      background-color: #e74c3c;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #c0392b;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+    }
+
+    #result {
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ecf0f1;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    #result h3 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    #result p {
+      font-size: 15px;
+      margin: 5px 0;
+    }
+  </style>
 </head>
 <body>
-<form id="contactForm" action="confirmation.php" method="post">
-    <h2>Application Form</h2>
-    <div class="row">
-        <label>Full Name</label>
-        <input type="text" name="name" id="nameInput">
-        <div class="error" id="nameErr"></div>
+
+  <h2>Student Registration Form</h2>
+
+  <form name="fm1" onsubmit="return validateForm(event)">
+
+    <label for="fna">First Name:</label>
+    <input type="text" id="fna" name="fna" placeholder="First Name" autofocus>
+    <div id="fnameError" class="error"></div>
+
+    <label for="lna">Last Name:</label>
+    <input type="text" id="lna" name="lna" placeholder="Last Name">
+    <div id="lnameError" class="error"></div>
+
+    <fieldset>
+      <legend>Course:</legend>
+      <input type="checkbox" id="dca" name="course" value="DCA">
+      <label for="dca">DCA</label>
+
+      <input type="checkbox" id="wdev" name="course" value="Web Developer">
+      <label for="wdev">Web Developer</label>
+
+      <input type="checkbox" id="wdes" name="course" value="Web Designer">
+      <label for="wdes">Web Designer</label>
+      <div id="courseError" class="error"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Fee:</legend>
+      <input type="radio" id="cash" name="fees" value="Cash" checked>
+      <label for="cash">Cash</label>
+
+      <input type="radio" id="cheque" name="fees" value="Cheque">
+      <label for="cheque">Cheque</label>
+
+      <input type="radio" id="dd" name="fees" value="DD">
+      <label for="dd">DD</label>
+    </fieldset>
+
+    <label for="apl">Place:</label>
+    <select id="apl" name="apl">
+      <option value="">--Select Place--</option>
+      <option value="Ongole">Ongole</option>
+      <option value="Nellore">Nellore</option>
+      <option value="Guntur">Guntur</option>
+      <option value="Tirupathi">Tirupathi</option>
+      <option value="Gudur">Gudur</option>
+      <option value="Vijayawada">Vijayawada</option>
+    </select>
+    <div id="placeError" class="error"></div>
+
+    <label for="bq">Qualification:</label>
+    <select id="bq" name="bq" multiple>
+      <option value="SSC">SSC</option>
+      <option value="Inter">Inter</option>
+      <option value="Degree">Degree</option>
+      <option value="PG">PG</option>
+      <option value="Diploma">Diploma</option>
+    </select>
+    <div id="qualError" class="error"></div>
+
+    <label for="adr">Address:</label>
+    <textarea id="adr" name="adr" placeholder="Enter address here"></textarea>
+    <div id="addrError" class="error"></div>
+
+    <div style="text-align:center;">
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset" onclick="clearResult()">
     </div>
-    <div class="row">
-        <label>Email Address</label>
-        <input type="text" name="email" id="emailInput">
-        <div class="error" id="emailErr"></div>
-    </div>
-    <div class="row">
-        <label>Mobile Number</label>
-        <input type="text" name="mobile" id="mobileInput" maxlength="10">
-        <div class="error" id="mobileErr"></div>
-    </div>
-    <div class="row">
-        <label>Country</label>
-        <select name="country" id="countrySelect">
-            <option>Select</option>
-            <option>Australia</option>
-            <option>India</option>
-            <option>United States</option>
-            <option>United Kingdom</option>
-        </select> 
-        <div class="error" id="countryErr"></div>
-    </div>
-    <div class="row">
-        <label>Gender</label>
-        <div class="form-inline">
-            <label><input type="radio" name="gender" value="male"> Male</label>
-            <label><input type="radio" name="gender" value="female"> Female</label> 
-        </div>
-        <div class="error" id="genderErr"></div>
-    </div>
-    <div class="row">
-        <label>Hobbies <i>(Optional)</i></label>
-        <div class="form-inline">
-            <label><input type="checkbox" name="hobbies" value="sports"> Sports</label>
-            <label><input type="checkbox" name="hobbies" value="movies"> Movies</label>
-            <label><input type="checkbox" name="hobbies" value="music"> Music</label>  
-        </div>
-    </div>        
-    <div class="row">
-        <input type="submit" value="Submit">
-    </div>
-</form>
+  </form>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("#contactForm");
-    const nameInput = document.querySelector("#nameInput");
-    const emailInput = document.querySelector("#emailInput");
-    const mobileInput = document.querySelector("#mobileInput");
-    const countrySelect = document.querySelector("#countrySelect");
-    const genderInputs = document.getElementsByName("gender");
-    const hobbyInputs = document.getElementsByName("hobbies");
+  <!-- Display results here -->
+  <div id="result">
+    <h3>Submitted Details</h3>
+    <p id="rname"></p>
+    <p id="rcourse"></p>
+    <p id="rfees"></p>
+    <p id="rplace"></p>
+    <p id="rqual"></p>
+    <p id="raddr"></p>
+  </div>
 
-    const printError = (id, msg) => document.getElementById(id).textContent = msg;
+  <script>
+    function validateForm(event) {
+      event.preventDefault(); // stop page refresh
+      let valid = true;
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+      // Clear old errors
+      document.querySelectorAll('.error').forEach(e => e.textContent = "");
 
-        let name = nameInput.value.trim();
-        let email = emailInput.value.trim();
-        let mobile = mobileInput.value.trim();
-        let country = countrySelect.value;
-        let gender = Array.from(genderInputs).find(r => r.checked)?.value || "";
-        let hobbies = Array.from(hobbyInputs).filter(c => c.checked).map(c => c.value);
+      const fname = document.getElementById("fna").value.trim();
+      const lname = document.getElementById("lna").value.trim();
+      const addr = document.getElementById("adr").value.trim();
+      const place = document.getElementById("apl").value;
+      const courses = document.querySelectorAll('input[name="course"]:checked');
+      const qualification = document.getElementById("bq").selectedOptions;
+      const fees = document.querySelector('input[name="fees"]:checked').value;
 
-        let nameErr = emailErr = mobileErr = countryErr = genderErr = true;
+      // Validate First Name
+      if (fname === "") {
+        document.getElementById("fnameError").textContent = "First name is required.";
+        valid = false;
+      } else if (!/^[A-Za-z]+$/.test(fname)) {
+        document.getElementById("fnameError").textContent = "Only alphabets allowed.";
+        valid = false;
+      }
 
-        // Name validation
-        if(name === "") printError("nameErr", "Please enter your name");
-        else if(!/^[a-zA-Z\s]+$/.test(name)) printError("nameErr", "Please enter a valid name");
-        else { printError("nameErr", ""); nameErr = false; }
+      // Validate Last Name
+      if (lname === "") {
+        document.getElementById("lnameError").textContent = "Last name is required.";
+        valid = false;
+      } else if (!/^[A-Za-z]+$/.test(lname)) {
+        document.getElementById("lnameError").textContent = "Only alphabets allowed.";
+        valid = false;
+      }
 
-        // Email validation
-        if(email === "") printError("emailErr", "Please enter your email address");
-        else if(!/^\S+@\S+\.\S+$/.test(email)) printError("emailErr", "Please enter a valid email address");
-        else { printError("emailErr", ""); emailErr = false; }
+      // Validate Courses
+      if (courses.length === 0) {
+        document.getElementById("courseError").textContent = "Select at least one course.";
+        valid = false;
+      }
 
-        // Mobile validation
-        if(mobile === "") printError("mobileErr", "Please enter your mobile number");
-        else if(!/^[1-9]\d{9}$/.test(mobile)) printError("mobileErr", "Please enter a valid 10-digit mobile number");
-        else { printError("mobileErr", ""); mobileErr = false; }
+      // Validate Place
+      if (place === "") {
+        document.getElementById("placeError").textContent = "Select your place.";
+        valid = false;
+      }
 
-        // Country validation
-        if(country === "Select") printError("countryErr", "Please select your country");
-        else { printError("countryErr", ""); countryErr = false; }
+      // Validate Qualification
+      if (qualification.length === 0) {
+        document.getElementById("qualError").textContent = "Select at least one qualification.";
+        valid = false;
+      }
 
-        // Gender validation
-        if(gender === "") printError("genderErr", "Please select your gender");
-        else { printError("genderErr", ""); genderErr = false; }
+      // Validate Address
+      if (addr === "") {
+        document.getElementById("addrError").textContent = "Address is required.";
+        valid = false;
+      }
 
-        if(nameErr || emailErr || mobileErr || countryErr || genderErr) return false;
+      if (!valid) {
+        alert("Please fix the errors before submitting!");
+        return false;
+      }
 
-        // Data preview
-        const dataPreview = `You've entered the following details:
-Full Name: ${name}
-Email Address: ${email}
-Mobile Number: ${mobile}
-Country: ${country}
-Gender: ${gender}
-Hobbies: ${hobbies.join(", ") || "None"}`;
+      // Collect and display form data
+      let selectedCourses = Array.from(courses).map(c => c.value).join(", ");
+      let selectedQual = Array.from(qualification).map(q => q.value).join(", ");
 
-        alert(dataPreview);
-        form.submit(); // optional: remove if you just want preview without actual submission
-    });
-});
-</script>
+      document.getElementById("rname").innerHTML = `<strong>Name:</strong> ${fname} ${lname}`;
+      document.getElementById("rcourse").innerHTML = `<strong>Courses:</strong> ${selectedCourses}`;
+      document.getElementById("rfees").innerHTML = `<strong>Fee Type:</strong> ${fees}`;
+      document.getElementById("rplace").innerHTML = `<strong>Place:</strong> ${place}`;
+      document.getElementById("rqual").innerHTML = `<strong>Qualification:</strong> ${selectedQual}`;
+      document.getElementById("raddr").innerHTML = `<strong>Address:</strong> ${addr}`;
+
+      document.getElementById("result").style.display = "block";
+      return true;
+    }
+
+    function clearResult() {
+      document.getElementById("result").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
