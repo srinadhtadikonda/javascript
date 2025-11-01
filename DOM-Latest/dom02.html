@@ -4,7 +4,6 @@ marks-calculator/
 ├── index.html
 └── script.js
 
-✅ index.html (Modern Version)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +61,6 @@ marks-calculator/
       line-height: 1.5;
     }
   </style>
-
-  <!-- Load JavaScript module -->
   <script type="module" src="script.js" defer></script>
 </head>
 <body>
@@ -82,11 +79,24 @@ marks-calculator/
     <label for="section">Section:</label>
     <input type="text" id="section" placeholder="Enter section" required>
 
-    <!-- Marks fields -->
-    ${Array.from({ length: 6 }, (_, i) => `
-      <label for="mark${i + 1}">Mark ${i + 1}:</label>
-      <input type="number" id="mark${i + 1}" placeholder="Enter mark ${i + 1}" required>
-    `).join('')}
+    <!-- Marks fields (manual instead of template literal) -->
+    <label for="mark1">Mark 1:</label>
+    <input type="number" id="mark1" placeholder="Enter mark 1" required>
+
+    <label for="mark2">Mark 2:</label>
+    <input type="number" id="mark2" placeholder="Enter mark 2" required>
+
+    <label for="mark3">Mark 3:</label>
+    <input type="number" id="mark3" placeholder="Enter mark 3" required>
+
+    <label for="mark4">Mark 4:</label>
+    <input type="number" id="mark4" placeholder="Enter mark 4" required>
+
+    <label for="mark5">Mark 5:</label>
+    <input type="number" id="mark5" placeholder="Enter mark 5" required>
+
+    <label for="mark6">Mark 6:</label>
+    <input type="number" id="mark6" placeholder="Enter mark 6" required>
 
     <div class="button-container">
       <button id="calculateBtn">Calculate</button>
@@ -99,11 +109,7 @@ marks-calculator/
 </html>
 
 
-(Note: Some editors won’t allow template literals in raw HTML, so keep the 6 <label> and <input> pairs manually if needed.)
-
-✅ script.js (Modern JavaScript ES6+)
-// script.js
-
+script.js
 // Wait until the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   const resultDiv = document.querySelector("#result");
@@ -117,7 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sclass = getValue("sclass");
     const section = getValue("section");
 
-    const marks = Array.from({ length: 6 }, (_, i) => parseFloat(getValue(`mark${i + 1}`)) || 0);
+    const marks = Array.from({ length: 6 }, (_, i) =>
+      parseFloat(getValue(`mark${i + 1}`))
+    );
 
     // Validation
     if (!sno || !sname || !sclass || !section || marks.some(isNaN)) {
