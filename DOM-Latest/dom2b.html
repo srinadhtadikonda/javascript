@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marks and Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: pink;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: aqua;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      width: 95%;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .button-container {
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 30px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 400px;
+      text-align: left;
+      font-size: 1.1em;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Marks and Grade Calculator</h2>
+
+    <label for="sno">Student Number:</label>
+    <input type="text" id="sno" placeholder="Enter student number" required>
+
+    <label for="sname">Student Name:</label>
+    <input type="text" id="sname" placeholder="Enter student name" required>
+
+    <label for="sclass">Class:</label>
+    <input type="text" id="sclass" placeholder="Enter class" required>
+
+    <label for="section">Section:</label>
+    <input type="text" id="section" placeholder="Enter section" required>
+
+    <label for="mark1">Mark 1:</label>
+    <input type="number" id="mark1" placeholder="Enter mark 1" required>
+
+    <label for="mark2">Mark 2:</label>
+    <input type="number" id="mark2" placeholder="Enter mark 2" required>
+
+    <label for="mark3">Mark 3:</label>
+    <input type="number" id="mark3" placeholder="Enter mark 3" required>
+
+    <label for="mark4">Mark 4:</label>
+    <input type="number" id="mark4" placeholder="Enter mark 4" required>
+
+    <label for="mark5">Mark 5:</label>
+    <input type="number" id="mark5" placeholder="Enter mark 5" required>
+
+    <label for="mark6">Mark 6:</label>
+    <input type="number" id="mark6" placeholder="Enter mark 6" required>
+
+    <div class="button-container">
+      <button id="calculateBtn">Calculate</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <!-- Result section will appear below -->
+  <div id="result"></div>
+
+  <footer>© 2025 Marks Calculator</footer>
+
+  <script src="marks_script.js"></script>
+</body>
+</html>
+
+marks_script.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const resultDiv = document.querySelector("#result");
+  const calculateBtn = document.querySelector("#calculateBtn");
+  const resetBtn = document.querySelector("#resetBtn");
+
+  calculateBtn.addEventListener("click", () => {
+    const sno = getValue("sno");
+    const sname = getValue("sname");
+    const sclass = getValue("sclass");
+    const section = getValue("section");
+
+    const marks = Array.from({ length: 6 }, (_, i) =>
+      parseFloat(getValue(`mark${i + 1}`))
+    );
+
+    if (!sno || !sname || !sclass || !section || marks.some(isNaN)) {
+      resultDiv.innerHTML = "<p style='color:red;'>⚠️ Please fill in all fields correctly.</p>";
+      return;
+    }
+
+    const { total, average, grade, passOrFail } = calculateGrade(marks);
+
+    resultDiv.innerHTML = `
+      <h3>Result Summary</h3>
+      <p><strong>Student Number:</strong> ${sno}</p>
+      <p><strong>Student Name:</strong> ${sname}</p>
+      <p><strong>Class:</strong> ${sclass}</p>
+      <p><strong>Section:</strong> ${section}</p>
+      <p><strong>Total Marks:</strong> ${total}</p>
+      <p><strong>Average Marks:</strong> ${average.toFixed(2)}</p>
+      <p><strong>Grade:</strong> ${grade}</p>
+      <p><strong>Result:</strong> ${passOrFail}</p>
+    `;
+  });
+
+  resetBtn.addEventListener("click", () => {
+    document.querySelectorAll("input").forEach(input => (input.value = ""));
+    resultDiv.innerHTML = "";
+  });
+});
+
+const getValue = id => document.getElementById(id).value.trim();
+
+const calculateGrade = marks => {
+  const total = marks.reduce((sum, mark) => sum + mark, 0);
+  const average = total / marks.length;
+  const isFail = marks.some(mark => mark < 35);
+
+  let grade;
+  if (isFail) grade = "F";
+  else if (average >= 90) grade = "A";
+  else if (average >= 75) grade = "B";
+  else if (average >= 60) grade = "C";
+  else if (average >= 50) grade = "D";
+  else grade = "E";
+
+  const passOrFail = isFail ? "Fail" : "Pass";
+  return { total, average, grade, passOrFail };
+};
