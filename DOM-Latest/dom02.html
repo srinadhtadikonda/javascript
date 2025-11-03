@@ -1,9 +1,3 @@
-Project Structure
-marks-calculator/
-│
-├── index.html
-└── script.js
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +9,7 @@ marks-calculator/
       font-family: Arial;
       background-color: pink;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -55,13 +50,18 @@ marks-calculator/
       background-color: #0056b3;
     }
     #result {
-      margin-top: 20px;
+      margin-top: 25px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 400px;
+      text-align: left;
       font-size: 1.1em;
       color: #333;
-      line-height: 1.5;
+      line-height: 1.6;
     }
   </style>
-  <script type="module" src="script.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -79,7 +79,6 @@ marks-calculator/
     <label for="section">Section:</label>
     <input type="text" id="section" placeholder="Enter section" required>
 
-    <!-- Marks fields (manual instead of template literal) -->
     <label for="mark1">Mark 1:</label>
     <input type="number" id="mark1" placeholder="Enter mark 1" required>
 
@@ -102,75 +101,76 @@ marks-calculator/
       <button id="calculateBtn">Calculate</button>
       <button id="resetBtn">Reset</button>
     </div>
-
-    <div id="result"></div>
   </div>
+
+  <!-- Result section at the bottom -->
+  <div id="result"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const resultDiv = document.querySelector("#result");
+      const calculateBtn = document.querySelector("#calculateBtn");
+      const resetBtn = document.querySelector("#resetBtn");
+
+      // Calculate button event
+      calculateBtn.addEventListener("click", () => {
+        const sno = getValue("sno");
+        const sname = getValue("sname");
+        const sclass = getValue("sclass");
+        const section = getValue("section");
+
+        const marks = Array.from({ length: 6 }, (_, i) =>
+          parseFloat(getValue(`mark${i + 1}`))
+        );
+
+        // Validation
+        if (!sno || !sname || !sclass || !section || marks.some(isNaN)) {
+          resultDiv.innerHTML = "<p style='color:red;'>⚠️ Please fill in all fields correctly.</p>";
+          return;
+        }
+
+        const { total, average, grade, passOrFail } = calculateGrade(marks);
+
+        resultDiv.innerHTML = `
+          <h3>Result Summary</h3>
+          <p><strong>Student Number:</strong> ${sno}</p>
+          <p><strong>Student Name:</strong> ${sname}</p>
+          <p><strong>Class:</strong> ${sclass}</p>
+          <p><strong>Section:</strong> ${section}</p>
+          <p><strong>Total Marks:</strong> ${total}</p>
+          <p><strong>Average Marks:</strong> ${average.toFixed(2)}</p>
+          <p><strong>Grade:</strong> ${grade}</p>
+          <p><strong>Result:</strong> ${passOrFail}</p>
+        `;
+      });
+
+      // Reset button event
+      resetBtn.addEventListener("click", () => {
+        document.querySelectorAll("input").forEach(input => (input.value = ""));
+        resultDiv.innerHTML = "";
+      });
+    });
+
+    // Helper to get input value by ID
+    const getValue = id => document.getElementById(id).value.trim();
+
+    // Function to calculate total, average, and grade
+    const calculateGrade = marks => {
+      const total = marks.reduce((sum, mark) => sum + mark, 0);
+      const average = total / marks.length;
+      const isFail = marks.some(mark => mark < 35);
+
+      let grade;
+      if (isFail) grade = "F";
+      else if (average >= 90) grade = "A";
+      else if (average >= 75) grade = "B";
+      else if (average >= 60) grade = "C";
+      else if (average >= 50) grade = "D";
+      else grade = "E";
+
+      const passOrFail = isFail ? "Fail" : "Pass";
+      return { total, average, grade, passOrFail };
+    };
+  </script>
 </body>
 </html>
-
-
-script.js
-// Wait until the DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  const resultDiv = document.querySelector("#result");
-  const calculateBtn = document.querySelector("#calculateBtn");
-  const resetBtn = document.querySelector("#resetBtn");
-
-  // ✅ Calculate button event
-  calculateBtn.addEventListener("click", () => {
-    const sno = getValue("sno");
-    const sname = getValue("sname");
-    const sclass = getValue("sclass");
-    const section = getValue("section");
-
-    const marks = Array.from({ length: 6 }, (_, i) =>
-      parseFloat(getValue(`mark${i + 1}`))
-    );
-
-    // Validation
-    if (!sno || !sname || !sclass || !section || marks.some(isNaN)) {
-      resultDiv.innerHTML = `<p style="color:red;">⚠️ Please fill in all fields correctly.</p>`;
-      return;
-    }
-
-    const { total, average, grade, passOrFail } = calculateGrade(marks);
-
-    resultDiv.innerHTML = `
-      <p><strong>Student Number:</strong> ${sno}</p>
-      <p><strong>Student Name:</strong> ${sname}</p>
-      <p><strong>Class:</strong> ${sclass}</p>
-      <p><strong>Section:</strong> ${section}</p>
-      <p><strong>Total Marks:</strong> ${total}</p>
-      <p><strong>Average Marks:</strong> ${average.toFixed(2)}</p>
-      <p><strong>Grade:</strong> ${grade}</p>
-      <p><strong>Result:</strong> ${passOrFail}</p>
-    `;
-  });
-
-  // ✅ Reset button event
-  resetBtn.addEventListener("click", () => {
-    document.querySelectorAll("input").forEach(input => (input.value = ""));
-    resultDiv.innerHTML = "";
-  });
-});
-
-// 🔹 Helper function to get input value by id
-const getValue = id => document.getElementById(id).value.trim();
-
-// 🔹 Function to calculate total, average, and grade
-const calculateGrade = marks => {
-  const total = marks.reduce((sum, mark) => sum + mark, 0);
-  const average = total / marks.length;
-  const isFail = marks.some(mark => mark < 35);
-
-  let grade;
-  if (isFail) grade = "F";
-  else if (average >= 90) grade = "A";
-  else if (average >= 75) grade = "B";
-  else if (average >= 60) grade = "C";
-  else if (average >= 50) grade = "D";
-  else grade = "E";
-
-  const passOrFail = isFail ? "Fail" : "Pass";
-  return { total, average, grade, passOrFail };
-};
