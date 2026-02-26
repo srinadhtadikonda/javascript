@@ -1,0 +1,17 @@
+i=1;s=0
+n=parseInt(prompt("Enter a number..:"))
+t=n
+while(i<=n)
+{
+    r=n%10
+    s=s+r*r*r
+    n=Math.floor(n/10)
+}
+if(t==s)
+{
+    console.log("ArmStrong")
+}
+else
+{
+console.log("Not")
+}
