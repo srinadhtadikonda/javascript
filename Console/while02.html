@@ -1,0 +1,16 @@
+i=1;f=0;l=0
+n=parseInt(prompt("Enter a number..:"))
+l=n%10
+while(i<=n)
+{
+    f=n%10
+    n=Math.floor(n/10)
+}
+if(l==f)
+{
+    console.log("cyclo number")
+}
+else
+{
+    console.log("not")
+}
