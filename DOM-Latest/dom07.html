@@ -35,3 +35,87 @@
   </script>
 </body>
 </html>
+---------------------------------------------------------------------------
+
+🔹 1. DOMContentLoaded Event
+document.addEventListener("DOMContentLoaded", () => {
+
+This ensures the script runs only after the HTML page is fully loaded
+
+Prevents errors like accessing elements before they exist
+
+🔹 2. Selecting Elements
+const form = document.querySelector("#coffeeForm");
+const orderInput = document.querySelector("#order");
+const checkboxes = form.querySelectorAll("input[name='coffee']");
+
+form → selects the <form> using its id
+
+orderInput → selects the text box where result is shown
+
+checkboxes → selects all checkboxes with name coffee
+
+👉 querySelectorAll() returns a NodeList (like array)
+
+🔹 3. updateOrder Function
+const updateOrder = () => {
+
+This function runs whenever user changes checkbox selection.
+
+🔸 Step 3.1: Get Selected Checkboxes
+const selected = [...checkboxes]
+  .filter(cb => cb.checked)
+  .map(cb => cb.value);
+
+Breakdown:
+
+[...checkboxes] → converts NodeList into an array
+
+.filter(cb => cb.checked) → keeps only checked boxes
+
+.map(cb => cb.value) → extracts values like "cream" or "sugar"
+
+👉 Example result:
+
+["cream", "sugar"]
+🔸 Step 3.2: Update Textbox
+orderInput.value = selected.length
+  ? `You ordered coffee with ${selected.join(", ")}`
+  : "";
+
+If user selected something:
+
+Shows message like:
+👉 You ordered coffee with cream, sugar
+
+If nothing selected:
+
+Textbox becomes empty
+
+👉 join(", ") combines array values into a string
+
+🔹 4. Adding Event Listeners
+checkboxes.forEach(cb => cb.addEventListener("change", updateOrder));
+
+For each checkbox:
+
+Add a "change" event
+
+When user:
+
+checks ✔️ or unchecks ❌ → updateOrder() runs
+
+🔹 Final Flow (Important)
+
+Page loads → script runs
+
+User clicks checkbox
+
+"change" event triggers
+
+updateOrder() runs
+
+Selected values collected
+
+Textbox updates instantly
+  
