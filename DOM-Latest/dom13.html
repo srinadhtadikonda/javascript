@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Redirect Demo</title>
 </head>
 <body>
-  <h2>Redirect a webpage after 5 seconds</h2>
-  <p id="result"></p>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const result = document.getElementById("result");
-      const delay = 5000; // 5 seconds
+<h2>Redirect a webpage after 5 seconds</h2>
+<p id="result"></p>
 
-      result.innerHTML = `<b>The page will redirect after a delay of 5 seconds using setTimeout().</b>`;
+<script>
+  const result = document.querySelector("#result");
+  const delay = 5000; // 5 seconds
 
-      setTimeout(() => {
-        window.location.href = "https://www.nipunatechnologies.com";
-      }, delay);
-    });
-  </script>
+  const showMessage = () => {
+    result.innerHTML = `<b>The page will redirect after 5 seconds using setTimeout().</b>`;
+  };
+
+  const redirectPage = () => {
+    window.location.assign("https://www.nipunatechnologies.com");
+  };
+
+  // Initialize message
+  showMessage();
+
+  // Redirect after delay
+  setTimeout(redirectPage, delay);
+</script>
+
 </body>
 </html>
