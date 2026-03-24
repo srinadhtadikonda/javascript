@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Demo</title>
 </head>
 <body>
-  <label for="mysp">Items:</label>
-  <select id="mysp">
-    <option value="pen">PEN</option>
-    <option value="pencil">PENCIL</option>
-    <option value="book">BOOK</option>
-    <option value="eraser">ERASER</option>
-    <option value="scale">SCALE</option>
-    <option value="bag">BAG</option>
-  </select>
 
-  <br><br>
+<label for="mysp">Items:</label>
+<select id="mysp">
+  <option value="pen">PEN</option>
+  <option value="pencil">PENCIL</option>
+  <option value="book">BOOK</option>
+  <option value="eraser">ERASER</option>
+  <option value="scale">SCALE</option>
+  <option value="bag">BAG</option>
+</select>
 
-  <table>
-    <tr>
-      <td>Your Selection = </td>
-      <td><p id="ps"></p></td>
-    </tr>
-  </table>
+<br><br>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const selectItem = document.getElementById("mysp");
-      const displaySelection = document.getElementById("ps");
+<table>
+  <tr>
+    <td>Your Selection = </td>
+    <td><p id="ps"></p></td>
+  </tr>
+</table>
 
-      selectItem.addEventListener("change", () => {
-        const selectedValue = selectItem.value;
-        displaySelection.textContent = selectedValue.toUpperCase();
-      });
-    });
-  </script>
+<script>
+  const selectItem = document.querySelector("#mysp");
+  const displaySelection = document.querySelector("#ps");
+
+  const updateSelection = () => {
+    displaySelection.textContent = selectItem.value.toUpperCase();
+  };
+
+  // Modern event handling
+  selectItem.addEventListener("change", updateSelection);
+
+  // Initialize default value on page load
+  updateSelection();
+</script>
+
 </body>
 </html>
