@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple,Compound Interest Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: pink;
+            margin: 50px;
+        }
+
+        .container {
+            background-color:  #008080;
+            padding: 25px 40px 25px 15px;
+            border-radius: 10px;
+            text-align: start;
+            width: 300px;
+        }
+
+      
+
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid red;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+     
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Simple and Compound Interest Calculator</h2>
+        <label for="principal">Principal Amount (P):</label>
+        <input type="number" id="principal" placeholder="Enter principal amount" min="0">
+        
+        <label for="rate">Rate of Interest (R) % per annum:</label>
+        <input type="number" id="rate" placeholder="Enter rate of interest" min="0">
+
+        <label for="time">Time Period (T) in years:</label>
+        <input type="number" id="time" placeholder="Enter time period in years" min="0">
+
+        <label for="n">Number of times interest applied per time period (for CI):</label>
+        <input type="number" id="n" placeholder="Enter number of times interest applied" min="0">
+
+        <div>
+            <button onclick="calculateInterest()">Calculate</button>
+            <button id="clearBtn" onclick="clearFields()">Clear</button>
+        </div>
+        <p id="result"></p>
+    </div>
+    <script>
+        function calculateInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const time = parseFloat(document.getElementById('time').value);
+            const n = parseFloat(document.getElementById('n').value);
+
+         
+
+            // Simple Interest (SI) calculation
+            const simpleInterest = (principal * rate * time) / 100;
+
+            // Compound Interest (CI) calculation
+            const compoundAmount = principal * Math.pow((1 + (rate / (n * 100))), (n * time));
+            const compoundInterest = compoundAmount - principal;
+
+            document.getElementById('result').innerText = 
+              resultText = "Simple Interest (SI): Rs. " + simpleInterest.toString(2) + "\n";
+              resultText += "Compound Interest (CI): Rs. " + compoundInterest.toString(2);  
+           document.getElementById('result').innerText = resultText;
+      }
+
+        function clearFields() {
+            document.getElementById('principal').value = '';
+            document.getElementById('rate').value = '';
+            document.getElementById('time').value = '';
+            document.getElementById('n').value = '';
+            document.getElementById('result').innerText = '';
+        }
+    </script>
+</body>
+</html>
