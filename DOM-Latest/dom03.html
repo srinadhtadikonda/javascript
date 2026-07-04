@@ -69,41 +69,62 @@
       margin-top: 15px;
       font-size: 1.2em;
       text-align: center;
-      color: #fff;
+      color: white;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
+
   <form id="interestForm">
     <div class="d1">
       <table>
         <tr>
           <td>
             <label for="v1">PRINCIPAL</label>
-            <input type="number" id="v1" name="aval" placeholder="Enter Principal" required class="tbs1" autofocus />
+            <input
+              type="number"
+              id="v1"
+              placeholder="Enter Principal"
+              class="tbs1"
+              required
+              autofocus
+            />
           </td>
         </tr>
 
         <tr>
           <td>
             <label for="v2">TIME (Years)</label>
-            <input type="number" id="v2" name="bval" placeholder="Enter Time" required class="tbs1" />
+            <input
+              type="number"
+              id="v2"
+              placeholder="Enter Time"
+              class="tbs1"
+              required
+            />
           </td>
         </tr>
 
         <tr>
           <td>
             <label for="v3">RATE (%)</label>
-            <input type="number" id="v3" name="cval" placeholder="Enter Rate" required class="tbs1" />
+            <input
+              type="number"
+              id="v3"
+              placeholder="Enter Rate"
+              class="tbs1"
+              required
+            />
           </td>
         </tr>
 
         <tr>
-          <td style="text-align: center;">
+          <td style="text-align:center;">
             <button type="button" class="bts1" id="siBtn">SI</button>
             <button type="button" class="bts1" id="ciBtn">CI</button>
-            <button type="reset" class="bts1">←</button>
+            <button type="reset" class="bts1">← Reset</button>
           </td>
         </tr>
       </table>
@@ -113,13 +134,16 @@
   </form>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function () {
+
       const principalInput = document.getElementById("v1");
       const timeInput = document.getElementById("v2");
       const rateInput = document.getElementById("v3");
       const resultDisplay = document.getElementById("result");
+      const form = document.getElementById("interestForm");
 
-      const calculateSI = () => {
+      // Simple Interest
+      function calculateSI() {
         const p = parseFloat(principalInput.value);
         const t = parseFloat(timeInput.value);
         const r = parseFloat(rateInput.value);
@@ -130,10 +154,11 @@
         }
 
         const si = (p * t * r) / 100;
-        resultDisplay.textContent = `💰 Simple Interest: ₹${si.toFixed(2)}`;
-      };
+        resultDisplay.textContent = "💰 Simple Interest: ₹" + si.toFixed(2);
+      }
 
-      const calculateCI = () => {
+      // Compound Interest
+      function calculateCI() {
         const p = parseFloat(principalInput.value);
         const t = parseFloat(timeInput.value);
         const r = parseFloat(rateInput.value);
@@ -143,13 +168,23 @@
           return;
         }
 
-        const ci = p * (Math.pow(1 + r / 100, t)) - p;
-        resultDisplay.textContent = `💰 Compound Interest: ₹${ci.toFixed(2)}`;
-      };
+        const ci = p * Math.pow(1 + r / 100, t) - p;
+        resultDisplay.textContent = "💰 Compound Interest: ₹" + ci.toFixed(2);
+      }
 
+      // Button Events
       document.getElementById("siBtn").addEventListener("click", calculateSI);
       document.getElementById("ciBtn").addEventListener("click", calculateCI);
+
+      // Reset Event (clears result also)
+      form.addEventListener("reset", function () {
+        setTimeout(function () {
+          resultDisplay.textContent = "";
+        }, 0);
+      });
+
     });
   </script>
+
 </body>
 </html>
