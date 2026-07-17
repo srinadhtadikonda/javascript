@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Registration Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    width:750px;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+h1{
+    text-align:center;
+    color:#0077cc;
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input[type=text],
+input[type=number],
+input[type=url],
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+    height:80px;
+}
+
+fieldset{
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+legend{
+    color:#0077cc;
+    font-weight:bold;
+}
+
+.options label{
+    display:inline;
+    margin-right:15px;
+    font-weight:normal;
+}
+
+.buttons{
+    text-align:center;
+    margin-top:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    margin:5px;
+}
+
+.submit{
+    background:#28a745;
+    color:white;
+}
+
+.reset{
+    background:#dc3545;
+    color:white;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+#result{
+    display:none;
+    margin-top:25px;
+    background:#f5f5f5;
+    border-left:5px solid green;
+    padding:20px;
+    border-radius:6px;
+}
+
+#result img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid #0077cc;
+    margin-bottom:15px;
+}
+
+@media(max-width:768px){
+.container{
+width:100%;
+}
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Employee Registration Form</h1>
+
+<form id="empForm">
+
+<div class="form-group">
+<label>Employee ID</label>
+<input type="text" id="empid" required>
+</div>
+
+<div class="form-group">
+<label>Employee Name</label>
+<input type="text" id="empname" required>
+</div>
+
+<div class="form-group">
+<label>Photo URL</label>
+<input type="url" id="photo" placeholder="https://example.com/photo.jpg">
+</div>
+
+<div class="form-group">
+<fieldset>
+<legend>Gender</legend>
+
+<div class="options">
+<label><input type="radio" name="gender" value="Male" checked> Male</label>
+<label><input type="radio" name="gender" value="Female"> Female</label>
+<label><input type="radio" name="gender" value="Other"> Other</label>
+</div>
+
+</fieldset>
+</div>
+
+<div class="form-group">
+
+<label>Department</label>
+
+<select id="department">
+<option>HR</option>
+<option>Accounts</option>
+<option>Sales</option>
+<option>Marketing</option>
+<option>Development</option>
+<option>Support</option>
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Designation</label>
+
+<select id="designation">
+<option>Manager</option>
+<option>Team Leader</option>
+<option>Software Engineer</option>
+<option>Trainer</option>
+<option>Accountant</option>
+<option>Executive</option>
+</select>
+
+</div>
+
+<div class="form-group">
+
+<fieldset>
+
+<legend>Skills</legend>
+
+<div class="options">
+
+<label><input type="checkbox" value="Java"> Java</label>
+
+<label><input type="checkbox" value="Python"> Python</label>
+
+<label><input type="checkbox" value="JavaScript"> JavaScript</label>
+
+<label><input type="checkbox" value="SQL"> SQL</label>
+
+</div>
+
+</fieldset>
+
+</div>
+
+<div class="form-group">
+
+<label>Salary</label>
+
+<input type="number" id="salary" required>
+
+</div>
+
+<div class="form-group">
+
+<label>Experience (Years)</label>
+
+<input type="number" id="experience" required>
+
+</div>
+
+<div class="form-group">
+
+<fieldset>
+
+<legend>Payment Mode</legend>
+
+<div class="options">
+
+<label><input type="radio" name="payment" value="Bank Transfer" checked> Bank Transfer</label>
+
+<label><input type="radio" name="payment" value="Cash"> Cash</label>
+
+<label><input type="radio" name="payment" value="Cheque"> Cheque</label>
+
+</div>
+
+</fieldset>
+
+</div>
+
+<div class="form-group">
+
+<label>Address</label>
+
+<textarea id="address"></textarea>
+
+</div>
+
+<div class="buttons">
+
+<button class="submit">Register</button>
+
+<button type="reset" class="reset">Reset</button>
+
+</div>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const form=document.getElementById("empForm");
+const result=document.getElementById("result");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let id=document.getElementById("empid").value;
+let name=document.getElementById("empname").value;
+let photo=document.getElementById("photo").value;
+
+let gender=document.querySelector("input[name=gender]:checked").value;
+
+let department=document.getElementById("department").value;
+
+let designation=document.getElementById("designation").value;
+
+let salary=parseFloat(document.getElementById("salary").value);
+
+let experience=document.getElementById("experience").value;
+
+let payment=document.querySelector("input[name=payment]:checked").value;
+
+let address=document.getElementById("address").value;
+
+let skills=[];
+
+document.querySelectorAll("input[type=checkbox]:checked")
+.forEach(item=>skills.push(item.value));
+
+if(skills.length==0){
+alert("Please select at least one skill.");
+return;
+}
+
+let category="";
+
+if(salary>=100000)
+category="High Salary";
+
+else if(salary>=50000)
+category="Medium Salary";
+
+else
+category="Low Salary";
+
+if(photo==""){
+photo="https://via.placeholder.com/120";
+}
+
+result.style.display="block";
+
+result.innerHTML=`
+
+<center>
+
+<img src="${photo}" alt="Employee Photo">
+
+<h2 style="color:green;">Employee Registered Successfully</h2>
+
+</center>
+
+<hr><br>
+
+<p><strong>Employee ID :</strong> ${id}</p>
+
+<p><strong>Name :</strong> ${name}</p>
+
+<p><strong>Gender :</strong> ${gender}</p>
+
+<p><strong>Department :</strong> ${department}</p>
+
+<p><strong>Designation :</strong> ${designation}</p>
+
+<p><strong>Skills :</strong> ${skills.join(", ")}</p>
+
+<p><strong>Salary :</strong> ₹${salary.toLocaleString()}</p>
+
+<p><strong>Salary Category :</strong> ${category}</p>
+
+<p><strong>Experience :</strong> ${experience} Years</p>
+
+<p><strong>Payment Mode :</strong> ${payment}</p>
+
+<p><strong>Address :</strong> ${address}</p>
+
+`;
+
+});
+
+form.addEventListener("reset",function(){
+
+setTimeout(function(){
+
+result.style.display="none";
+
+},100);
+
+});
+
+</script>
+
+</body>
+</html>
